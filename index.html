@@ -16,28 +16,63 @@
 
     <!-- HEADER NEXORA -->
     <header class="app-header">
+
       <div class="brand">
         <span class="brand-n">N</span><span>exora</span>
       </div>
 
       <div class="header-actions">
-        <button class="icon-button create-header" id="headerCreateButton" aria-label="Créer">
-          +
+
+        <!-- VIDÉOS -->
+        <button
+          class="icon-button video-header"
+          id="videoButton"
+          aria-label="Vidéos"
+          title="Vidéos"
+        >
+          <span class="video-icon">
+            ▶
+          </span>
         </button>
 
-        <button class="icon-button" id="searchButton" aria-label="Rechercher">
+        <!-- NOTIFICATIONS -->
+        <button
+          class="icon-button notification-header"
+          id="notificationButton"
+          aria-label="Notifications"
+          title="Notifications"
+        >
+          <span class="notification-icon">♧</span>
+          <span class="notification-badge header-badge">3</span>
+        </button>
+
+        <!-- RECHERCHE -->
+        <button
+          class="icon-button"
+          id="searchButton"
+          aria-label="Rechercher"
+          title="Rechercher"
+        >
           <span class="search-icon"></span>
         </button>
 
-        <button class="icon-button" id="menuButton" aria-label="Menu">
+        <!-- MENU -->
+        <button
+          class="icon-button"
+          id="menuButton"
+          aria-label="Menu"
+          title="Menu"
+        >
           <span class="hamburger">
             <i></i>
             <i></i>
             <i></i>
           </span>
         </button>
+
       </div>
     </header>
+
 
     <!-- CONTENU PRINCIPAL -->
     <main class="main-content">
@@ -46,58 +81,58 @@
       <section class="composer-card">
 
         <div class="composer-top">
-          <div class="avatar avatar-main">P</div>
 
-          <button class="composer-input" id="openComposer">
+          <!-- + DÉPLACÉ ICI -->
+          <button
+            class="composer-create-plus"
+            id="composerCreateButton"
+            aria-label="Créer"
+            title="Créer"
+          >
+            +
+          </button>
+
+          <button
+            class="composer-input"
+            id="openComposer"
+          >
             Quoi de neuf sur Nexora ?
           </button>
 
-          <button class="camera-button" id="cameraButton" aria-label="Ajouter une photo">
+          <button
+            class="camera-button"
+            id="cameraButton"
+            aria-label="Ajouter une photo"
+            title="Ajouter une photo"
+          >
             <span>▣</span>
           </button>
-        </div>
-
-        <div class="composer-options">
-
-          <button class="composer-option photo" data-create="Photo">
-            <span class="option-icon">▧</span>
-            <span>Photo</span>
-          </button>
-
-          <button class="composer-option video" data-create="Vidéo">
-            <span class="option-icon">▣</span>
-            <span>Vidéo</span>
-          </button>
-
-          <button class="composer-option text" data-create="Texte">
-            <span class="option-icon">✎</span>
-            <span>Texte</span>
-          </button>
-
-          <button class="composer-option music" data-create="Musique">
-            <span class="option-icon">♫</span>
-            <span>Musique</span>
-          </button>
-
-          <button class="composer-option place" data-create="Lieu">
-            <span class="option-icon">⌖</span>
-            <span>Lieu</span>
-          </button>
 
         </div>
+
       </section>
+
 
       <!-- MOMENTS -->
       <section class="section-block">
 
         <div class="section-title-row">
           <h2>✨ Moments</h2>
-          <button class="see-all" id="seeMoments">Voir tout</button>
+
+          <button
+            class="see-all"
+            id="seeMoments"
+          >
+            Voir tout
+          </button>
         </div>
 
         <div class="moments-scroll">
 
-          <button class="moment-card create-moment" id="createMoment">
+          <button
+            class="moment-card create-moment"
+            id="createMoment"
+          >
             <span class="moment-plus">+</span>
             <span>Créer un<br>moment</span>
           </button>
@@ -137,16 +172,24 @@
         </div>
       </section>
 
+
       <!-- FIL PERSONNALISÉ -->
       <section class="feed-section">
 
         <div class="feed-heading">
+
           <h2>🔥 Pour vous</h2>
 
-          <button class="filter-button" id="filterButton" aria-label="Personnaliser le fil">
+          <button
+            class="filter-button"
+            id="filterButton"
+            aria-label="Personnaliser le fil"
+          >
             ☷
           </button>
+
         </div>
+
 
         <!-- PUBLICATION -->
         <article class="post-card">
@@ -160,6 +203,7 @@
               </div>
 
               <div>
+
                 <div class="author-name">
                   Otaku Exorciste
                   <span class="verified">✓</span>
@@ -168,33 +212,48 @@
                 <div class="post-meta">
                   @otakux · 21 min · 🌐
                 </div>
+
               </div>
 
             </div>
 
-            <button class="more-button" aria-label="Options">•••</button>
+            <button
+              class="more-button"
+              aria-label="Options"
+            >
+              •••
+            </button>
 
           </div>
+
 
           <p class="post-text">
             Quelle est votre série préférée en ce moment ? 👀
           </p>
 
+
           <div class="post-image">
+
             <div class="anime-character">
               <div class="character-hair"></div>
+
               <div class="character-face">
                 <span class="eye left"></span>
                 <span class="eye right"></span>
               </div>
+
               <div class="character-clothes"></div>
             </div>
 
             <div class="energy energy-one"></div>
             <div class="energy energy-two"></div>
 
-            <span class="post-image-label">NEXORA</span>
+            <span class="post-image-label">
+              NEXORA
+            </span>
+
           </div>
+
 
           <div class="post-actions">
 
@@ -223,6 +282,7 @@
 
           </div>
 
+
           <div class="post-summary">
             <span class="summary-heart">♥</span>
             <strong class="summary-likes">248 J'aime</strong>
@@ -232,22 +292,29 @@
             <span>12 reposts</span>
           </div>
 
+
           <div class="featured-comment">
 
-            <div class="avatar avatar-comment">M</div>
+            <div class="avatar avatar-comment">
+              M
+            </div>
 
             <div class="comment-content">
               <strong>Maya</strong>
-              <p>Cette publication est incroyable 😍</p>
+              <p>
+                Cette publication est incroyable 😍
+              </p>
             </div>
 
           </div>
+
 
           <button class="comments-link">
             Voir les 34 commentaires
           </button>
 
         </article>
+
 
         <!-- DEUXIÈME PUBLICATION -->
         <article class="post-card second-post">
@@ -261,6 +328,7 @@
               </div>
 
               <div>
+
                 <div class="author-name">
                   Léo Créatif
                 </div>
@@ -268,22 +336,36 @@
                 <div class="post-meta">
                   @leo · 38 min · 🌐
                 </div>
+
               </div>
 
             </div>
 
-            <button class="more-button" aria-label="Options">•••</button>
+            <button
+              class="more-button"
+              aria-label="Options"
+            >
+              •••
+            </button>
 
           </div>
+
 
           <p class="post-text">
             Petite création du jour. Vous en pensez quoi ? ✨
           </p>
 
+
           <div class="creative-post">
             <span>NEXORA</span>
-            <strong>CREATE<br>DISCOVER<br>SHARE</strong>
+
+            <strong>
+              CREATE<br>
+              DISCOVER<br>
+              SHARE
+            </strong>
           </div>
+
 
           <div class="post-actions">
 
@@ -316,87 +398,161 @@
 
       </section>
 
+
       <div class="feed-end">
         <span>✦</span>
-        <p>Ton fil Nexora s'adapte progressivement à tes goûts.</p>
+        <p>
+          Ton fil Nexora s'adapte progressivement à tes goûts.
+        </p>
       </div>
 
     </main>
 
+
     <!-- NAVIGATION INFÉRIEURE -->
     <nav class="bottom-navigation">
 
-      <button class="nav-item active" data-page="home">
+      <button
+        class="nav-item active"
+        data-page="home"
+      >
         <span class="nav-icon">⌂</span>
         <span>Accueil</span>
       </button>
 
-      <button class="nav-item" data-page="explore">
+
+      <button
+        class="nav-item"
+        data-page="explore"
+      >
         <span class="nav-icon">◈</span>
         <span>Explorer</span>
       </button>
 
-      <button class="nav-create" id="bottomCreateButton">
-        <span>+</span>
+
+      <!-- LE + EST REMPLACÉ PAR VIDÉO -->
+      <button
+        class="nav-video"
+        id="bottomVideoButton"
+        aria-label="Vidéos"
+        title="Vidéos"
+      >
+        <span class="nav-video-icon">
+          ▶
+        </span>
       </button>
 
-      <button class="nav-item messages-nav" data-page="messages">
-        <span class="notification-badge">3</span>
-        <span class="nav-icon">▢</span>
-        <span>Messages</span>
+
+      <button
+        class="nav-item messages-nav"
+        data-page="messages"
+      >
+        <span class="notification-badge">
+          3
+        </span>
+
+        <span class="nav-icon">
+          ▢
+        </span>
+
+        <span>
+          Messages
+        </span>
       </button>
 
-      <button class="nav-item" data-page="profile">
-        <span class="nav-avatar">P</span>
-        <span>Profil</span>
+
+      <button
+        class="nav-item"
+        data-page="profile"
+      >
+        <span class="nav-avatar">
+          P
+        </span>
+
+        <span>
+          Profil
+        </span>
       </button>
 
     </nav>
 
   </div>
 
+
   <!-- MODALE DE CRÉATION -->
-  <div class="modal-overlay" id="createModal">
+  <div
+    class="modal-overlay"
+    id="createModal"
+  >
 
     <div class="modal">
 
       <div class="modal-header">
-        <h2>Créer sur Nexora</h2>
-        <button class="modal-close" data-close-modal>×</button>
+
+        <h2>
+          Créer sur Nexora
+        </h2>
+
+        <button
+          class="modal-close"
+          data-close-modal
+        >
+          ×
+        </button>
+
       </div>
 
       <p class="modal-subtitle">
         Partage quelque chose avec ta communauté.
       </p>
 
+
       <div class="creation-grid">
 
-        <button class="creation-choice photo" data-modal-create="Photo">
+        <button
+          class="creation-choice photo"
+          data-modal-create="Photo"
+        >
           <span>▧</span>
           <strong>Photo</strong>
         </button>
 
-        <button class="creation-choice video" data-modal-create="Vidéo">
+        <button
+          class="creation-choice video"
+          data-modal-create="Vidéo"
+        >
           <span>▣</span>
           <strong>Vidéo</strong>
         </button>
 
-        <button class="creation-choice text" data-modal-create="Texte">
+        <button
+          class="creation-choice text"
+          data-modal-create="Texte"
+        >
           <span>✎</span>
           <strong>Texte</strong>
         </button>
 
-        <button class="creation-choice music" data-modal-create="Musique">
+        <button
+          class="creation-choice music"
+          data-modal-create="Musique"
+        >
           <span>♫</span>
           <strong>Musique</strong>
         </button>
 
-        <button class="creation-choice place" data-modal-create="Lieu">
+        <button
+          class="creation-choice place"
+          data-modal-create="Lieu"
+        >
           <span>⌖</span>
           <strong>Lieu</strong>
         </button>
 
-        <button class="creation-choice moment" data-modal-create="Moment">
+        <button
+          class="creation-choice moment"
+          data-modal-create="Moment"
+        >
           <span>✦</span>
           <strong>Moment</strong>
         </button>
@@ -407,98 +563,160 @@
 
   </div>
 
+
   <!-- MODALE MENU -->
-  <div class="modal-overlay" id="menuModal">
+  <div
+    class="modal-overlay"
+    id="menuModal"
+  >
 
     <div class="menu-panel">
 
       <div class="menu-header">
-        <button class="back-button" data-close-menu>‹</button>
 
-        <h2>Menu</h2>
+        <button
+          class="back-button"
+          data-close-menu
+        >
+          ‹
+        </button>
 
-        <button class="menu-search" id="menuSearchButton">⌕</button>
+        <h2>
+          Menu
+        </h2>
+
+        <button
+          class="menu-search"
+          id="menuSearchButton"
+        >
+          ⌕
+        </button>
+
       </div>
+
 
       <div class="menu-profile">
 
-        <div class="avatar avatar-menu">P</div>
-
-        <div>
-          <strong>Paul</strong>
-          <span>Voir votre profil</span>
+        <div class="avatar avatar-menu">
+          P
         </div>
 
-        <button>⌄</button>
+        <div>
+          <strong>
+            Paul
+          </strong>
+
+          <span>
+            Voir votre profil
+          </span>
+        </div>
+
+        <button>
+          ⌄
+        </button>
 
       </div>
 
+
       <div class="menu-grid">
 
-        <button class="menu-card" data-menu-item="Messages">
+        <button
+          class="menu-card"
+          data-menu-item="Messages"
+        >
           <span>💬</span>
           <strong>Messages</strong>
         </button>
 
-        <button class="menu-card" data-menu-item="Amis">
+        <button
+          class="menu-card"
+          data-menu-item="Amis"
+        >
           <span>👥</span>
           <strong>Amis</strong>
         </button>
 
-        <button class="menu-card" data-menu-item="Moments">
+        <button
+          class="menu-card"
+          data-menu-item="Moments"
+        >
           <span>✨</span>
           <strong>Moments</strong>
         </button>
 
-        <button class="menu-card" data-menu-item="Enregistrements">
+        <button
+          class="menu-card"
+          data-menu-item="Enregistrements"
+        >
           <span>🔖</span>
           <strong>Enregistrements</strong>
         </button>
 
-        <button class="menu-card" data-menu-item="Notifications">
+        <button
+          class="menu-card"
+          data-menu-item="Notifications"
+        >
           <span>🔔</span>
           <strong>Notifications</strong>
         </button>
 
-        <button class="menu-card" data-menu-item="Communautés">
+        <button
+          class="menu-card"
+          data-menu-item="Communautés"
+        >
           <span>👨‍👩‍👧‍👦</span>
           <strong>Communautés</strong>
         </button>
 
-        <button class="menu-card" data-menu-item="Découvrir">
+        <button
+          class="menu-card"
+          data-menu-item="Découvrir"
+        >
           <span>🧭</span>
           <strong>Découvrir</strong>
         </button>
 
-        <button class="menu-card" data-menu-item="Événements">
+        <button
+          class="menu-card"
+          data-menu-item="Événements"
+        >
           <span>📅</span>
           <strong>Événements</strong>
         </button>
 
       </div>
 
+
       <div class="menu-settings">
 
         <button>
           <span>⚙️</span>
-          <strong>Paramètres et confidentialité</strong>
+          <strong>
+            Paramètres et confidentialité
+          </strong>
           <span>⌄</span>
         </button>
 
         <button>
           <span>❔</span>
-          <strong>Aide et assistance</strong>
+          <strong>
+            Aide et assistance
+          </strong>
           <span>⌄</span>
         </button>
 
         <button>
           <span>➕</span>
-          <strong>Ajouter un compte</strong>
+          <strong>
+            Ajouter un compte
+          </strong>
         </button>
 
         <button class="logout-button">
           <span>🚪</span>
-          <strong>Déconnexion</strong>
+          <strong>
+            Déconnexion
+          </strong>
         </button>
 
       </div>
@@ -507,9 +725,15 @@
 
   </div>
 
+
   <!-- TOAST -->
-  <div class="toast" id="toast"></div>
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
 
   <script src="script.js"></script>
+
 </body>
-          </html>
+        </html>
