@@ -1430,3 +1430,116 @@ button:focus-visible {
     height: 49px;
   }
   }
+
+
+/* =========================================================
+   MODIFICATIONS DEMANDÉES — NEXORA
+   ========================================================= */
+
+/* Bouton + déplacé dans "Quoi de neuf ?" */
+.composer-create-plus {
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(109, 40, 217, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.composer-create-plus:active {
+  transform: scale(0.94);
+}
+
+.composer-create-plus:hover {
+  box-shadow: 0 10px 25px rgba(109, 40, 217, 0.30);
+}
+
+
+/* Bouton vidéo du haut */
+.video-header {
+  position: relative;
+}
+
+.video-icon {
+  font-size: 21px;
+  line-height: 1;
+  color: #111827;
+}
+
+
+/* Notification du haut */
+.notification-header {
+  position: relative;
+}
+
+.notification-icon {
+  font-size: 24px;
+  line-height: 1;
+  color: #111827;
+}
+
+.header-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+
+/* Nouvelle navigation vidéo du bas */
+.nav-video {
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(109, 40, 217, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.nav-video:active {
+  transform: scale(0.94);
+}
+
+.nav-video-icon {
+  font-size: 25px;
+  line-height: 1;
+  margin-left: 3px;
+}
+
+
+/* Adaptation mobile */
+@media (max-width: 480px) {
+
+  .composer-create-plus {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    font-size: 34px;
+  }
+
+  .nav-video {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+  }
+
+  .nav-video-icon {
+    font-size: 23px;
+  }
+
+}
