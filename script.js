@@ -581,6 +581,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      NAVIGATION
+     =========================================================
+     
+     Amis a été supprimé.
+     Explorer est maintenant accessible depuis le Menu.
      ========================================================= */
 
   const navItems =
@@ -596,9 +600,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       navItems.forEach((navItem) => {
-
         navItem.classList.remove("active");
-
       });
 
 
@@ -609,9 +611,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         home:
           "🏠 Accueil",
-
-        friends:
-          "👥 Ton espace Amis arrive bientôt.",
 
         messages:
           "💬 Tes messages arrivent bientôt.",
