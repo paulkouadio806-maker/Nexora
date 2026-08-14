@@ -2,14 +2,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const createModal =
-    document.getElementById("createModal");
-
-  const menuModal =
-    document.getElementById("menuModal");
-
-  const toast =
-    document.getElementById("toast");
+  const createModal = document.getElementById("createModal");
+  const menuModal = document.getElementById("menuModal");
+  const toast = document.getElementById("toast");
 
   let toastTimer = null;
 
@@ -27,15 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(toastTimer);
 
     toast.textContent = message;
-
     toast.classList.add("show");
 
     toastTimer = setTimeout(() => {
-
       toast.classList.remove("show");
-
     }, 2400);
-
   }
 
 
@@ -46,9 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     modal.classList.add("open");
-
     document.body.style.overflow = "hidden";
-
   }
 
 
@@ -67,22 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
       menuModal?.classList.contains("open");
 
     if (!createIsOpen && !menuIsOpen) {
-
       document.body.style.overflow = "";
-
     }
-
   }
 
 
   function closeAllModals() {
 
     createModal?.classList.remove("open");
-
     menuModal?.classList.remove("open");
 
     document.body.style.overflow = "";
-
   }
 
 
@@ -100,34 +84,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("createMoment");
 
 
-  composerCreateButton?.addEventListener(
-    "click",
-    () => {
-
-      openModal(createModal);
-
-    }
-  );
+  composerCreateButton?.addEventListener("click", () => {
+    openModal(createModal);
+  });
 
 
-  openComposer?.addEventListener(
-    "click",
-    () => {
-
-      openModal(createModal);
-
-    }
-  );
+  openComposer?.addEventListener("click", () => {
+    openModal(createModal);
+  });
 
 
-  createMoment?.addEventListener(
-    "click",
-    () => {
-
-      openModal(createModal);
-
-    }
-  );
+  createMoment?.addEventListener("click", () => {
+    openModal(createModal);
+  });
 
 
   /* =========================================================
@@ -135,33 +104,21 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const createCloseButton =
-    createModal?.querySelector(
-      "[data-close-modal]"
-    );
+    createModal?.querySelector("[data-close-modal]");
 
 
-  createCloseButton?.addEventListener(
-    "click",
-    () => {
+  createCloseButton?.addEventListener("click", () => {
+    closeModal(createModal);
+  });
 
+
+  createModal?.addEventListener("click", (event) => {
+
+    if (event.target === createModal) {
       closeModal(createModal);
-
     }
-  );
 
-
-  createModal?.addEventListener(
-    "click",
-    (event) => {
-
-      if (event.target === createModal) {
-
-        closeModal(createModal);
-
-      }
-
-    }
-  );
+  });
 
 
   /* =========================================================
@@ -169,9 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const creationButtons =
-    document.querySelectorAll(
-      "[data-modal-create]"
-    );
+    document.querySelectorAll("[data-modal-create]");
 
 
   const creationMessages = {
@@ -199,79 +154,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   creationButtons.forEach((button) => {
 
-    button.addEventListener(
-      "click",
-      () => {
+    button.addEventListener("click", () => {
 
-        const type =
-          button.dataset.modalCreate ||
-          "contenu";
+      const type =
+        button.dataset.modalCreate || "contenu";
 
-        closeModal(createModal);
+      closeModal(createModal);
 
-        showToast(
-          creationMessages[type] ||
-          `✨ Création ${type} bientôt disponible.`
-        );
+      showToast(
+        creationMessages[type] ||
+        `✨ Création ${type} bientôt disponible.`
+      );
 
-      }
-    );
+    });
 
   });
 
 
   /* =========================================================
-     CAMÉRA / CRÉATION
-     ========================================================= */
-
-  const cameraButton =
-    document.getElementById("cameraButton");
-
-
-  cameraButton?.addEventListener(
-    "click",
-    () => {
-
-      openModal(createModal);
-
-    }
-  );
-
-
-  /* =========================================================
-     VIDÉOS — BOUTON DU HAUT / VIDÉO
+     VIDÉOS
      ========================================================= */
 
   const videoButton =
     document.getElementById("videoButton");
 
 
-  videoButton?.addEventListener(
-    "click",
-    () => {
+  videoButton?.addEventListener("click", () => {
 
-      showToast(
-        "🎥 Les vidéos Nexora arrivent ici."
-      );
+    showToast(
+      "🎥 Les vidéos Nexora arrivent ici."
+    );
 
-    }
-  );
-
-
-  const bottomVideoButton =
-    document.getElementById("bottomVideoButton");
-
-
-  bottomVideoButton?.addEventListener(
-    "click",
-    () => {
-
-      showToast(
-        "🎥 Espace vidéos Nexora."
-      );
-
-    }
-  );
+  });
 
 
   /* =========================================================
@@ -279,43 +193,16 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const notificationButton =
-    document.getElementById(
-      "notificationButton"
+    document.getElementById("notificationButton");
+
+
+  notificationButton?.addEventListener("click", () => {
+
+    showToast(
+      "🔔 Tu n'as pas encore de nouvelles notifications."
     );
 
-
-  notificationButton?.addEventListener(
-    "click",
-    () => {
-
-      showToast(
-        "🔔 Tu n'as pas encore de nouvelles notifications."
-      );
-
-    }
-  );
-
-
-  /* =========================================================
-     EXPLORER — NOUVEAU BOUTON DU HAUT
-     ========================================================= */
-
-  const topExploreButton =
-    document.getElementById(
-      "topExploreButton"
-    );
-
-
-  topExploreButton?.addEventListener(
-    "click",
-    () => {
-
-      showToast(
-        "🧭 Explorer — découvre du contenu adapté à tes goûts."
-      );
-
-    }
-  );
+  });
 
 
   /* =========================================================
@@ -326,44 +213,27 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("menuButton");
 
 
-  menuButton?.addEventListener(
-    "click",
-    () => {
-
-      openModal(menuModal);
-
-    }
-  );
+  menuButton?.addEventListener("click", () => {
+    openModal(menuModal);
+  });
 
 
   const closeMenuButton =
-    menuModal?.querySelector(
-      "[data-close-menu]"
-    );
+    menuModal?.querySelector("[data-close-menu]");
 
 
-  closeMenuButton?.addEventListener(
-    "click",
-    () => {
+  closeMenuButton?.addEventListener("click", () => {
+    closeModal(menuModal);
+  });
 
+
+  menuModal?.addEventListener("click", (event) => {
+
+    if (event.target === menuModal) {
       closeModal(menuModal);
-
     }
-  );
 
-
-  menuModal?.addEventListener(
-    "click",
-    (event) => {
-
-      if (event.target === menuModal) {
-
-        closeModal(menuModal);
-
-      }
-
-    }
-  );
+  });
 
 
   /* =========================================================
@@ -371,21 +241,16 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const menuSearchButton =
-    document.getElementById(
-      "menuSearchButton"
+    document.getElementById("menuSearchButton");
+
+
+  menuSearchButton?.addEventListener("click", () => {
+
+    showToast(
+      "🔎 Recherche dans Nexora bientôt disponible."
     );
 
-
-  menuSearchButton?.addEventListener(
-    "click",
-    () => {
-
-      showToast(
-        "🔎 Recherche dans Nexora bientôt disponible."
-      );
-
-    }
-  );
+  });
 
 
   /* =========================================================
@@ -400,22 +265,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   momentCards.forEach((card) => {
 
-    card.addEventListener(
-      "click",
-      () => {
+    card.addEventListener("click", () => {
 
-        const name =
-          card.querySelector("strong")
-            ?.textContent
-            ?.trim() ||
-          "cet utilisateur";
+      const name =
+        card.querySelector("strong")
+          ?.textContent
+          ?.trim() ||
+        "cet utilisateur";
 
-        showToast(
-          `✨ Ouverture du Moment de ${name}.`
-        );
+      showToast(
+        `✨ Ouverture du Moment de ${name}.`
+      );
 
-      }
-    );
+    });
 
   });
 
@@ -428,16 +290,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("filterButton");
 
 
-  filterButton?.addEventListener(
-    "click",
-    () => {
+  filterButton?.addEventListener("click", () => {
 
-      showToast(
-        "🎯 Ton fil apprend progressivement ce que tu aimes."
-      );
+    showToast(
+      "🎯 Ton fil apprend progressivement ce que tu aimes."
+    );
 
-    }
-  );
+  });
 
 
   /* =========================================================
@@ -445,94 +304,73 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const likeButtons =
-    document.querySelectorAll(
-      ".like-button"
-    );
+    document.querySelectorAll(".like-button");
 
 
   likeButtons.forEach((button) => {
 
-    button.addEventListener(
-      "click",
-      () => {
+    button.addEventListener("click", () => {
 
-        const countElement =
-          button.querySelector(
-            ".like-count"
+      const countElement =
+        button.querySelector(".like-count");
+
+      const heart =
+        button.querySelector(".heart");
+
+
+      if (!countElement) {
+        return;
+      }
+
+
+      const currentCount =
+        Number.parseInt(
+          countElement.textContent,
+          10
+        ) || 0;
+
+
+      const alreadyLiked =
+        button.classList.contains("liked");
+
+
+      if (alreadyLiked) {
+
+        button.classList.remove("liked");
+
+        countElement.textContent =
+          String(
+            Math.max(
+              0,
+              currentCount - 1
+            )
           );
 
-        const heart =
-          button.querySelector(
-            ".heart"
-          );
+
+        if (heart) {
+          heart.textContent = "♡";
+        }
+
+      } else {
+
+        button.classList.add("liked");
+
+        countElement.textContent =
+          String(currentCount + 1);
 
 
-        if (!countElement) {
-          return;
+        if (heart) {
+          heart.textContent = "♥";
         }
 
 
-        const currentCount =
-          Number.parseInt(
-            countElement.textContent,
-            10
-          ) || 0;
-
-
-        const alreadyLiked =
-          button.classList.contains(
-            "liked"
-          );
-
-
-        if (alreadyLiked) {
-
-          button.classList.remove(
-            "liked"
-          );
-
-          countElement.textContent =
-            String(
-              Math.max(
-                0,
-                currentCount - 1
-              )
-            );
-
-
-          if (heart) {
-
-            heart.textContent = "♡";
-
-          }
-
-        } else {
-
-          button.classList.add(
-            "liked"
-          );
-
-          countElement.textContent =
-            String(
-              currentCount + 1
-            );
-
-
-          if (heart) {
-
-            heart.textContent = "♥";
-
-          }
-
-
-          showToast(
-            "❤️ J'aime ajouté."
-          );
-
-        }
+        showToast(
+          "❤️ J'aime ajouté."
+        );
 
       }
-    );
+
+    });
 
   });
 
@@ -542,73 +380,57 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const commentButtons =
-    document.querySelectorAll(
-      ".comment-button"
-    );
+    document.querySelectorAll(".comment-button");
 
 
   commentButtons.forEach((button) => {
 
-    button.addEventListener(
-      "click",
-      () => {
+    button.addEventListener("click", () => {
 
-        const post =
-          button.closest(
-            ".post-card"
-          );
+      const post =
+        button.closest(".post-card");
 
-
-        const commentsLink =
-          post?.querySelector(
-            ".comments-link"
-          );
+      const commentsLink =
+        post?.querySelector(".comments-link");
 
 
-        if (commentsLink) {
+      if (commentsLink) {
 
-          commentsLink.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-          });
+        commentsLink.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
 
+        showToast(
+          "💬 Voici les commentaires."
+        );
 
-          showToast(
-            "💬 Voici les commentaires."
-          );
+      } else {
 
-        } else {
-
-          showToast(
-            "💬 Les commentaires arrivent bientôt."
-          );
-
-        }
+        showToast(
+          "💬 Les commentaires arrivent bientôt."
+        );
 
       }
-    );
+
+    });
 
   });
 
 
   const commentsLinks =
-    document.querySelectorAll(
-      ".comments-link"
-    );
+    document.querySelectorAll(".comments-link");
 
 
   commentsLinks.forEach((link) => {
 
-    link.addEventListener(
-      "click",
-      () => {
+    link.addEventListener("click", () => {
 
-        showToast(
-          "💬 L'espace commentaires Nexora arrive bientôt."
-        );
+      showToast(
+        "💬 L'espace commentaires Nexora arrive bientôt."
+      );
 
-      }
-    );
+    });
 
   });
 
@@ -618,31 +440,24 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const repostButtons =
-    document.querySelectorAll(
-      ".repost-button"
-    );
+    document.querySelectorAll(".repost-button");
 
 
   repostButtons.forEach((button) => {
 
-    button.addEventListener(
-      "click",
-      () => {
+    button.addEventListener("click", () => {
 
-        const activated =
-          button.classList.toggle(
-            "reposted"
-          );
+      const activated =
+        button.classList.toggle("reposted");
 
 
-        showToast(
-          activated
-            ? "🔁 Publication repostée."
-            : "Publication retirée de tes reposts."
-        );
+      showToast(
+        activated
+          ? "🔁 Publication repostée."
+          : "Publication retirée de tes reposts."
+      );
 
-      }
-    );
+    });
 
   });
 
@@ -652,31 +467,24 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const saveButtons =
-    document.querySelectorAll(
-      ".save-button"
-    );
+    document.querySelectorAll(".save-button");
 
 
   saveButtons.forEach((button) => {
 
-    button.addEventListener(
-      "click",
-      () => {
+    button.addEventListener("click", () => {
 
-        const saved =
-          button.classList.toggle(
-            "saved"
-          );
+      const saved =
+        button.classList.toggle("saved");
 
 
-        showToast(
-          saved
-            ? "🔖 Publication enregistrée."
-            : "Publication retirée des enregistrements."
-        );
+      showToast(
+        saved
+          ? "🔖 Publication enregistrée."
+          : "Publication retirée des enregistrements."
+      );
 
-      }
-    );
+    });
 
   });
 
@@ -686,81 +494,66 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const shareButtons =
-    document.querySelectorAll(
-      ".share-button"
-    );
+    document.querySelectorAll(".share-button");
 
 
   shareButtons.forEach((button) => {
 
-    button.addEventListener(
-      "click",
-      async () => {
+    button.addEventListener("click", async () => {
 
-        const post =
-          button.closest(
-            ".post-card"
-          );
+      const post =
+        button.closest(".post-card");
 
 
-        const author =
-          post?.querySelector(
-            ".author-name"
-          )
+      const author =
+        post?.querySelector(".author-name")
           ?.textContent
           ?.trim() ||
-          "Nexora";
+        "Nexora";
 
 
-        const shareData = {
+      const shareData = {
 
-          title:
-            `Publication de ${author}`,
+        title:
+          `Publication de ${author}`,
 
-          text:
-            "Découvre cette publication sur Nexora."
+        text:
+          "Découvre cette publication sur Nexora."
 
-        };
+      };
 
 
-        if (navigator.share) {
+      if (navigator.share) {
 
-          try {
+        try {
 
-            await navigator.share(
-              shareData
-            );
+          await navigator.share(shareData);
 
+          showToast(
+            "✓ Publication partagée."
+          );
+
+        } catch (error) {
+
+          if (error.name !== "AbortError") {
 
             showToast(
-              "✓ Publication partagée."
+              "Le partage n'a pas pu être effectué."
             );
-
-          } catch (error) {
-
-            if (
-              error.name !==
-              "AbortError"
-            ) {
-
-              showToast(
-                "Le partage n'a pas pu être effectué."
-              );
-
-            }
 
           }
 
-        } else {
-
-          showToast(
-            "🔗 Le partage sera bientôt disponible."
-          );
-
         }
 
+      } else {
+
+        showToast(
+          "🔗 Le partage sera bientôt disponible."
+        );
+
       }
-    );
+
+    });
 
   });
 
@@ -770,23 +563,18 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const moreButtons =
-    document.querySelectorAll(
-      ".more-button"
-    );
+    document.querySelectorAll(".more-button");
 
 
   moreButtons.forEach((button) => {
 
-    button.addEventListener(
-      "click",
-      () => {
+    button.addEventListener("click", () => {
 
-        showToast(
-          "⋯ Options de publication Nexora."
-        );
+      showToast(
+        "⋯ Options de publication Nexora."
+      );
 
-      }
-    );
+    });
 
   });
 
@@ -796,71 +584,60 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const navItems =
-    document.querySelectorAll(
-      ".nav-item"
-    );
+    document.querySelectorAll(".nav-item");
 
 
   navItems.forEach((item) => {
 
-    item.addEventListener(
-      "click",
-      () => {
+    item.addEventListener("click", () => {
 
-        const page =
-          item.dataset.page;
+      const page =
+        item.dataset.page;
 
 
-        navItems.forEach((navItem) => {
+      navItems.forEach((navItem) => {
 
-          navItem.classList.remove(
-            "active"
-          );
+        navItem.classList.remove("active");
 
-        });
+      });
 
 
-        item.classList.add(
-          "active"
-        );
+      item.classList.add("active");
 
 
-        const pageMessages = {
+      const pageMessages = {
 
-          home:
-            "🏠 Accueil",
+        home:
+          "🏠 Accueil",
 
-          friends:
-            "👥 Ton espace Amis arrive bientôt.",
+        friends:
+          "👥 Ton espace Amis arrive bientôt.",
 
-          messages:
-            "💬 Tes messages arrivent bientôt.",
+        messages:
+          "💬 Tes messages arrivent bientôt.",
 
-          profile:
-            "👤 Ton profil arrive bientôt."
+        profile:
+          "👤 Ton profil arrive bientôt."
 
-        };
+      };
 
 
-        showToast(
-          pageMessages[page] ||
-          "Espace Nexora bientôt disponible."
-        );
+      showToast(
+        pageMessages[page] ||
+        "Espace Nexora bientôt disponible."
+      );
 
-      }
-    );
+    });
 
   });
 
 
   /* =========================================================
-     MENU — CARTES
+     CARTES DU MENU
      ========================================================= */
 
   const menuCards =
-    document.querySelectorAll(
-      ".menu-card"
-    );
+    document.querySelectorAll(".menu-card");
 
 
   const menuMessages = {
@@ -868,8 +645,8 @@ document.addEventListener("DOMContentLoaded", () => {
     Messages:
       "💬 Ton espace de messages Nexora.",
 
-    Amis:
-      "👥 Ton espace Amis Nexora.",
+    Explorer:
+      "🧭 Explore du contenu adapté à tes goûts.",
 
     Moments:
       "✨ Retrouve ici tous tes Moments.",
@@ -884,7 +661,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "👥 Découvre les communautés Nexora.",
 
     Découvrir:
-      "🧭 Découvre du contenu adapté à tes goûts.",
+      "✨ Découvre du contenu adapté à tes goûts.",
 
     Événements:
       "📅 Les événements Nexora arrivent bientôt."
@@ -894,34 +671,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuCards.forEach((card) => {
 
-    card.addEventListener(
-      "click",
-      () => {
+    card.addEventListener("click", () => {
 
-        const item =
-          card.dataset.menuItem ||
-          card.querySelector("strong")
-            ?.textContent
-            ?.trim() ||
-          "Fonctionnalité";
+      const item =
+        card.dataset.menuItem ||
+        card.querySelector("strong")
+          ?.textContent
+          ?.trim() ||
+        "Fonctionnalité";
 
 
-        closeModal(menuModal);
+      closeModal(menuModal);
 
 
-        showToast(
-          menuMessages[item] ||
-          `${item} — bientôt disponible.`
-        );
+      showToast(
+        menuMessages[item] ||
+        `${item} — bientôt disponible.`
+      );
 
-      }
-    );
+    });
 
   });
 
 
   /* =========================================================
-     PARAMÈTRES DU MENU
+     PARAMÈTRES
      ========================================================= */
 
   const menuSettings =
@@ -932,86 +706,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuSettings.forEach((button) => {
 
-    button.addEventListener(
-      "click",
-      () => {
+    button.addEventListener("click", () => {
 
-        const title =
-          button.querySelector("strong")
-            ?.textContent
-            ?.trim() ||
-          "Option";
+      const title =
+        button.querySelector("strong")
+          ?.textContent
+          ?.trim() ||
+        "Option";
 
 
-        if (title === "Déconnexion") {
+      if (title === "Déconnexion") {
 
-          showToast(
-            "🚪 La déconnexion sera disponible avec le compte Nexora."
-          );
+        showToast(
+          "🚪 La déconnexion sera disponible avec le compte Nexora."
+        );
 
-          return;
-
-        }
-
-
-        if (title === "Ajouter un compte") {
-
-          showToast(
-            "➕ L'ajout de comptes multiples arrivera bientôt."
-          );
-
-          return;
-
-        }
+        return;
+      }
 
 
-        if (
-          title ===
-          "Paramètres et confidentialité"
-        ) {
+      if (title === "Ajouter un compte") {
 
-          showToast(
-            "⚙️ Les paramètres Nexora arrivent bientôt."
-          );
+        showToast(
+          "➕ L'ajout de comptes multiples arrivera bientôt."
+        );
 
-          return;
-
-        }
+        return;
+      }
 
 
-        if (
-          title ===
-          "Aide et assistance"
-        ) {
+      if (
+        title ===
+        "Paramètres et confidentialité"
+      ) {
 
-          showToast(
-            "❓ Le centre d'aide Nexora arrive bientôt."
-          );
+        showToast(
+          "⚙️ Les paramètres Nexora arrivent bientôt."
+        );
 
-        }
+        return;
+      }
+
+
+      if (
+        title ===
+        "Aide et assistance"
+      ) {
+
+        showToast(
+          "❓ Le centre d'aide Nexora arrive bientôt."
+        );
 
       }
-    );
+
+    });
 
   });
 
 
   /* =========================================================
-     FERMETURE AVEC ESC
+     ESC
      ========================================================= */
 
-  document.addEventListener(
-    "keydown",
-    (event) => {
+  document.addEventListener("keydown", (event) => {
 
-      if (event.key === "Escape") {
-
-        closeAllModals();
-
-      }
-
+    if (event.key === "Escape") {
+      closeAllModals();
     }
-  );
+
+  });
 
 
   /* =========================================================
@@ -1042,15 +805,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const touchEndX =
         event.changedTouches[0].screenX;
 
-
       const distance =
         touchEndX - touchStartX;
 
 
       if (distance > 90) {
-
         closeModal(menuModal);
-
       }
 
     },
