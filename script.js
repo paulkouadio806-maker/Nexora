@@ -2,20 +2,37 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const createModal = document.getElementById("createModal");
-  const menuModal = document.getElementById("menuModal");
-  const toast = document.getElementById("toast");
+  /* =========================================================
+     ELEMENTS PRINCIPAUX
+     ========================================================= */
+
+  const createModal =
+    document.getElementById("createModal");
+
+  const menuModal =
+    document.getElementById("menuModal");
+
+  const toast =
+    document.getElementById("toast");
+
+  const quickCreateOverlay =
+    document.getElementById("quickCreateOverlay");
+
+  const storyCreateOverlay =
+    document.getElementById("storyCreateOverlay");
 
   let toastTimer = null;
 
 
   /* =========================================================
-     UTILITAIRES
+     TOAST
      ========================================================= */
 
   function showToast(message) {
 
-    if (!toast) return;
+    if (!toast) {
+      return;
+    }
 
     clearTimeout(toastTimer);
 
@@ -28,30 +45,73 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  /* =========================================================
+     BODY SCROLL
+     ========================================================= */
+
+  function updateBodyScroll() {
+
+    const somethingOpen =
+      createModal?.classList.contains("open") ||
+      menuModal?.classList.contains("open") ||
+      quickCreateOverlay?.classList.contains("open") ||
+      storyCreateOverlay?.classList.contains("open");
+
+    document.body.classList.toggle(
+      "modal-open",
+      Boolean(somethingOpen)
+    );
+  }
+
+
+  /* =========================================================
+     MODALES
+     ========================================================= */
+
   function openModal(modal) {
 
-    if (!modal) return;
+    if (!modal) {
+      return;
+    }
 
     modal.classList.add("open");
-    document.body.style.overflow = "hidden";
+    updateBodyScroll();
   }
 
 
   function closeModal(modal) {
 
-    if (!modal) return;
+    if (!modal) {
+      return;
+    }
 
     modal.classList.remove("open");
+    updateBodyScroll();
+  }
 
-    const createIsOpen =
-      createModal?.classList.contains("open");
 
-    const menuIsOpen =
-      menuModal?.classList.contains("open");
+  function closeQuickCreate() {
 
-    if (!createIsOpen && !menuIsOpen) {
-      document.body.style.overflow = "";
+    quickCreateOverlay?.classList.remove("open");
+    updateBodyScroll();
+  }
+
+
+  function openStoryCreate() {
+
+    if (!storyCreateOverlay) {
+      return;
     }
+
+    storyCreateOverlay.classList.add("open");
+    updateBodyScroll();
+  }
+
+
+  function closeStoryCreate() {
+
+    storyCreateOverlay?.classList.remove("open");
+    updateBodyScroll();
   }
 
 
@@ -59,68 +119,319 @@ document.addEventListener("DOMContentLoaded", () => {
 
     createModal?.classList.remove("open");
     menuModal?.classList.remove("open");
+    quickCreateOverlay?.classList.remove("open");
+    storyCreateOverlay?.classList.remove("open");
 
-    document.body.style.overflow = "";
+    updateBodyScroll();
   }
 
 
   /* =========================================================
-     CRÉATION
+     NOUVEAU + DEVANT "QUOI DE NEUF"
      ========================================================= */
 
   const composerCreateButton =
     document.getElementById("composerCreateButton");
 
-  const openComposer =
-    document.getElementById("openComposer");
+
+  composerCreateButton?.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    quickCreateOverlay?.classList.add("open");
+
+    updateBodyScroll();
+
+  });
+
+
+  /* =========================================================
+     CLIC SUR PUBLICATION / STORY / NOTE
+     ========================================================= */
+
+  const quickCreateOptions =
+    document.querySelectorAll(
+      "[data-quick-create]"
+    );
+
+
+  quickCreateOptions.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+      const type =
+        button.dataset.quickCreate;
+
+      closeQuickCreate();
+
+
+      if (type === "Story") {
+
+        openStoryCreate();
+
+        return;
+      }
+
+
+      if (type === "Publication") {
+
+        showToast(
+          "📝 Création d'une publication Nexora."
+        );
+
+        openModal(createModal);
+
+        return;
+      }
+
+
+      if (type === "Note") {
+
+        showToast(
+          "💬 Création d'une note Nexora bientôt disponible."
+        );
+
+      }
+
+    });
+
+  });
+
+
+  /* =========================================================
+     FERMETURE POPUP RAPIDE
+     ========================================================= */
+
+  quickCreateOverlay?.addEventListener(
+    "click",
+    (event) => {
+
+      if (
+        event.target === quickCreateOverlay
+      ) {
+
+        closeQuickCreate();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     MOMENT +
+     ========================================================= */
 
   const createMoment =
     document.getElementById("createMoment");
 
 
-  composerCreateButton?.addEventListener("click", () => {
-    openModal(createModal);
-  });
-
-
-  openComposer?.addEventListener("click", () => {
-    openModal(createModal);
-  });
-
-
   createMoment?.addEventListener("click", () => {
-    openModal(createModal);
+
+    openStoryCreate();
+
   });
 
 
   /* =========================================================
-     FERMETURE CRÉATION
+     FERMETURE NOUVELLE STORY
      ========================================================= */
+
+  const storyCloseButton =
+    document.getElementById("storyCloseButton");
+
+
+  storyCloseButton?.addEventListener(
+    "click",
+    () => {
+      closeStoryCreate();
+    }
+  );
+
+
+  storyCreateOverlay?.addEventListener(
+    "click",
+    (event) => {
+
+      if (
+        event.target === storyCreateOverlay
+      ) {
+
+        closeStoryCreate();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     TYPES DE STORY
+     ========================================================= */
+
+  const storyTypeCards =
+    document.querySelectorAll(
+      ".story-type-card"
+    );
+
+
+  storyTypeCards.forEach((card) => {
+
+    card.addEventListener("click", () => {
+
+      const type =
+        card.dataset.storyType ||
+        "contenu";
+
+
+      if (type === "Texte") {
+
+        showToast(
+          "✍️ Création d'une story texte."
+        );
+
+        return;
+      }
+
+
+      if (type === "Musique") {
+
+        showToast(
+          "🎵 Sélection de musique bientôt disponible."
+        );
+
+        return;
+      }
+
+
+      if (type === "Caméra") {
+
+        showToast(
+          "📷 Caméra Nexora bientôt disponible."
+        );
+
+      }
+
+    });
+
+  });
+
+
+  /* =========================================================
+     PARAMÈTRES STORY
+     ========================================================= */
+
+  const storySettingsButton =
+    document.getElementById(
+      "storySettingsButton"
+    );
+
+
+  storySettingsButton?.addEventListener(
+    "click",
+    () => {
+
+      showToast(
+        "⚙️ Paramètres de story bientôt disponibles."
+      );
+
+    }
+  );
+
+
+  /* =========================================================
+     SÉLECTION STORY
+     ========================================================= */
+
+  const storySelectionButton =
+    document.getElementById(
+      "storySelectionButton"
+    );
+
+
+  storySelectionButton?.addEventListener(
+    "click",
+    () => {
+
+      showToast(
+        "🖼️ Sélection de contenu bientôt disponible."
+      );
+
+    }
+  );
+
+
+  /* =========================================================
+     GALERIE STORY
+     ========================================================= */
+
+  const storyGalleryItems =
+    document.querySelectorAll(
+      ".story-gallery-item"
+    );
+
+
+  storyGalleryItems.forEach((item, index) => {
+
+    item.addEventListener("click", () => {
+
+      showToast(
+        `🖼️ Élément ${index + 1} sélectionné.`
+      );
+
+    });
+
+  });
+
+
+  /* =========================================================
+     ANCIENNE CRÉATION
+     ========================================================= */
+
+  const openComposer =
+    document.getElementById("openComposer");
+
+
+  openComposer?.addEventListener(
+    "click",
+    () => {
+
+      openModal(createModal);
+
+    }
+  );
+
 
   const createCloseButton =
-    createModal?.querySelector("[data-close-modal]");
+    createModal?.querySelector(
+      "[data-close-modal]"
+    );
 
 
-  createCloseButton?.addEventListener("click", () => {
-    closeModal(createModal);
-  });
-
-
-  createModal?.addEventListener("click", (event) => {
-
-    if (event.target === createModal) {
+  createCloseButton?.addEventListener(
+    "click",
+    () => {
       closeModal(createModal);
     }
+  );
 
-  });
 
+  createModal?.addEventListener(
+    "click",
+    (event) => {
 
-  /* =========================================================
-     CHOIX DE CRÉATION
-     ========================================================= */
+      if (event.target === createModal) {
+        closeModal(createModal);
+      }
+
+    }
+  );
+
 
   const creationButtons =
-    document.querySelectorAll("[data-modal-create]");
+    document.querySelectorAll(
+      "[data-modal-create]"
+    );
 
 
   const creationMessages = {
@@ -148,69 +459,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   creationButtons.forEach((button) => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-      const type =
-        button.dataset.modalCreate || "contenu";
+        const type =
+          button.dataset.modalCreate ||
+          "contenu";
 
-      closeModal(createModal);
+        closeModal(createModal);
 
-      showToast(
-        creationMessages[type] ||
-        `✨ Création ${type} bientôt disponible.`
-      );
+        showToast(
+          creationMessages[type] ||
+          `✨ Création ${type} bientôt disponible.`
+        );
 
-    });
-
-  });
-
-
-  /* =========================================================
-     CAMÉRA
-     ========================================================= */
-
-  const cameraButton =
-    document.getElementById("cameraButton");
-
-
-  cameraButton?.addEventListener("click", () => {
-
-    showToast(
-      "📷 Appareil photo Nexora bientôt disponible."
-    );
-
-  });
-
-
-  /* =========================================================
-     VIDÉOS — BOUTON DU HAUT
-     ========================================================= */
-
-  const videoButton =
-    document.getElementById("videoButton");
-
-
-  videoButton?.addEventListener("click", () => {
-
-    showToast(
-      "🎥 Les vidéos Nexora arrivent ici."
-    );
-
-  });
-
-
-  /* =========================================================
-     VIDÉOS — BOUTON DE LA NAVIGATION
-     ========================================================= */
-
-  const bottomVideoButton =
-    document.getElementById("bottomVideoButton");
-
-
-  bottomVideoButton?.addEventListener("click", () => {
-
-    showToast(
-      "🎥 Espace vidéos Nexora."
+      }
     );
 
   });
@@ -221,47 +485,21 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================= */
 
   const notificationButton =
-    document.getElementById("notificationButton");
-
-
-  notificationButton?.addEventListener("click", () => {
-
-    showToast(
-      "🔔 Tu n'as pas encore de nouvelles notifications."
+    document.getElementById(
+      "notificationButton"
     );
 
-  });
 
+  notificationButton?.addEventListener(
+    "click",
+    () => {
 
-  /* =========================================================
-     MENU
-     ========================================================= */
+      showToast(
+        "🔔 Tu n'as pas encore de nouvelles notifications."
+      );
 
-  const menuButton =
-    document.getElementById("menuButton");
-
-
-  menuButton?.addEventListener("click", () => {
-    openModal(menuModal);
-  });
-
-
-  const closeMenuButton =
-    menuModal?.querySelector("[data-close-menu]");
-
-
-  closeMenuButton?.addEventListener("click", () => {
-    closeModal(menuModal);
-  });
-
-
-  menuModal?.addEventListener("click", (event) => {
-
-    if (event.target === menuModal) {
-      closeModal(menuModal);
     }
-
-  });
+  );
 
 
   /* =========================================================
@@ -272,409 +510,89 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("searchButton");
 
   const menuSearchButton =
-    document.getElementById("menuSearchButton");
-
-
-  searchButton?.addEventListener("click", () => {
-
-    showToast(
-      "🔎 Recherche Nexora bientôt disponible."
-    );
-
-  });
-
-
-  menuSearchButton?.addEventListener("click", () => {
-
-    showToast(
-      "🔎 Recherche dans Nexora bientôt disponible."
-    );
-
-  });
-
-
-  /* =========================================================
-     MOMENTS
-     ========================================================= */
-
-  const seeMoments =
-    document.getElementById("seeMoments");
-
-
-  seeMoments?.addEventListener("click", () => {
-
-    showToast(
-      "✨ Tous les Moments Nexora seront bientôt visibles ici."
-    );
-
-  });
-
-
-  const momentCards =
-    document.querySelectorAll(
-      ".moment-card:not(.create-moment)"
+    document.getElementById(
+      "menuSearchButton"
     );
 
 
-  momentCards.forEach((card) => {
-
-    card.addEventListener("click", () => {
-
-      const name =
-        card.querySelector("strong")?.textContent?.trim() ||
-        "cet utilisateur";
+  searchButton?.addEventListener(
+    "click",
+    () => {
 
       showToast(
-        `✨ Ouverture du Moment de ${name}.`
+        "🔎 Recherche Nexora bientôt disponible."
       );
 
-    });
+    }
+  );
 
-  });
+
+  menuSearchButton?.addEventListener(
+    "click",
+    () => {
+
+      showToast(
+        "🔎 Recherche dans Nexora bientôt disponible."
+      );
+
+    }
+  );
 
 
   /* =========================================================
-     FIL PERSONNALISÉ
+     MENU
      ========================================================= */
 
-  const filterButton =
-    document.getElementById("filterButton");
+  const menuButton =
+    document.getElementById("menuButton");
 
 
-  filterButton?.addEventListener("click", () => {
+  menuButton?.addEventListener(
+    "click",
+    () => {
 
-    showToast(
-      "🎯 Ton fil apprend progressivement ce que tu aimes."
+      openModal(menuModal);
+
+    }
+  );
+
+
+  const closeMenuButton =
+    menuModal?.querySelector(
+      "[data-close-menu]"
     );
 
-  });
+
+  closeMenuButton?.addEventListener(
+    "click",
+    () => {
+
+      closeModal(menuModal);
+
+    }
+  );
 
 
-  /* =========================================================
-     LIKES
-     ========================================================= */
+  menuModal?.addEventListener(
+    "click",
+    (event) => {
 
-  const likeButtons =
-    document.querySelectorAll(".like-button");
-
-
-  likeButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      const countElement =
-        button.querySelector(".like-count");
-
-      const heart =
-        button.querySelector(".heart");
-
-      if (!countElement) return;
-
-      const currentCount =
-        Number.parseInt(
-          countElement.textContent,
-          10
-        ) || 0;
-
-      const alreadyLiked =
-        button.classList.contains("liked");
-
-
-      if (alreadyLiked) {
-
-        button.classList.remove("liked");
-
-        countElement.textContent =
-          String(
-            Math.max(0, currentCount - 1)
-          );
-
-        if (heart) {
-          heart.textContent = "♡";
-        }
-
-      } else {
-
-        button.classList.add("liked");
-
-        countElement.textContent =
-          String(currentCount + 1);
-
-        if (heart) {
-          heart.textContent = "♥";
-        }
-
-        showToast("❤️ J'aime ajouté.");
-
+      if (event.target === menuModal) {
+        closeModal(menuModal);
       }
 
-    });
-
-  });
-
-
-  /* =========================================================
-     COMMENTAIRES
-     ========================================================= */
-
-  const commentButtons =
-    document.querySelectorAll(".comment-button");
-
-
-  commentButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      const post =
-        button.closest(".post-card");
-
-      const commentsLink =
-        post?.querySelector(".comments-link");
-
-
-      if (commentsLink) {
-
-        commentsLink.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-
-        showToast(
-          "💬 Voici les commentaires."
-        );
-
-      } else {
-
-        showToast(
-          "💬 Les commentaires arrivent bientôt."
-        );
-
-      }
-
-    });
-
-  });
-
-
-  const commentsLinks =
-    document.querySelectorAll(".comments-link");
-
-
-  commentsLinks.forEach((link) => {
-
-    link.addEventListener("click", () => {
-
-      showToast(
-        "💬 L'espace commentaires Nexora arrive bientôt."
-      );
-
-    });
-
-  });
+    }
+  );
 
 
   /* =========================================================
-     REPOST
-     ========================================================= */
-
-  const repostButtons =
-    document.querySelectorAll(".repost-button");
-
-
-  repostButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      const activated =
-        button.classList.toggle("reposted");
-
-
-      showToast(
-        activated
-          ? "🔁 Publication repostée."
-          : "Publication retirée de tes reposts."
-      );
-
-    });
-
-  });
-
-
-  /* =========================================================
-     ENREGISTREMENTS
-     ========================================================= */
-
-  const saveButtons =
-    document.querySelectorAll(".save-button");
-
-
-  saveButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      const saved =
-        button.classList.toggle("saved");
-
-
-      showToast(
-        saved
-          ? "🔖 Publication enregistrée."
-          : "Publication retirée des enregistrements."
-      );
-
-    });
-
-  });
-
-
-  /* =========================================================
-     PARTAGE
-     ========================================================= */
-
-  const shareButtons =
-    document.querySelectorAll(".share-button");
-
-
-  shareButtons.forEach((button) => {
-
-    button.addEventListener("click", async () => {
-
-      const post =
-        button.closest(".post-card");
-
-      const author =
-        post?.querySelector(".author-name")
-          ?.textContent
-          ?.trim() ||
-        "Nexora";
-
-
-      const shareData = {
-
-        title:
-          `Publication de ${author}`,
-
-        text:
-          "Découvre cette publication sur Nexora."
-
-      };
-
-
-      if (navigator.share) {
-
-        try {
-
-          await navigator.share(
-            shareData
-          );
-
-          showToast(
-            "✓ Publication partagée."
-          );
-
-        } catch (error) {
-
-          if (error.name !== "AbortError") {
-
-            showToast(
-              "Le partage n'a pas pu être effectué."
-            );
-
-          }
-
-        }
-
-      } else {
-
-        showToast(
-          "🔗 Le partage sera bientôt disponible."
-        );
-
-      }
-
-    });
-
-  });
-
-
-  /* =========================================================
-     OPTIONS PUBLICATIONS
-     ========================================================= */
-
-  const moreButtons =
-    document.querySelectorAll(".more-button");
-
-
-  moreButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      showToast(
-        "⋯ Options de publication Nexora."
-      );
-
-    });
-
-  });
-
-
-  /* =========================================================
-     NAVIGATION
-     ========================================================= */
-
-  const navItems =
-    document.querySelectorAll(".nav-item");
-
-
-  navItems.forEach((item) => {
-
-    item.addEventListener("click", () => {
-
-      const page =
-        item.dataset.page;
-
-
-      navItems.forEach((navItem) => {
-        navItem.classList.remove("active");
-      });
-
-
-      item.classList.add("active");
-
-
-      const pageMessages = {
-
-        home:
-          "🏠 Accueil",
-
-        explore:
-          "🧭 Explorer arrive bientôt.",
-
-        messages:
-          "💬 Tes messages arrivent bientôt.",
-
-        profile:
-          "👤 Ton profil arrive bientôt."
-
-      };
-
-
-      showToast(
-        pageMessages[page] ||
-        "Espace Nexora bientôt disponible."
-      );
-
-    });
-
-  });
-
-
-  /* =========================================================
-     MENU — CARTES
+     MENU CARTES
      ========================================================= */
 
   const menuCards =
-    document.querySelectorAll(".menu-card");
+    document.querySelectorAll(
+      ".menu-card"
+    );
 
 
   const menuMessages = {
@@ -708,31 +626,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuCards.forEach((card) => {
 
-    card.addEventListener("click", () => {
+    card.addEventListener(
+      "click",
+      () => {
 
-      const item =
-        card.dataset.menuItem ||
-        card.querySelector("strong")
-          ?.textContent
-          ?.trim() ||
-        "Fonctionnalité";
+        const item =
+          card.dataset.menuItem ||
+          card.querySelector("strong")
+            ?.textContent
+            ?.trim() ||
+          "Fonctionnalité";
 
 
-      closeModal(menuModal);
+        closeModal(menuModal);
 
+        showToast(
+          menuMessages[item] ||
+          `${item} — bientôt disponible.`
+        );
 
-      showToast(
-        menuMessages[item] ||
-        `${item} — bientôt disponible.`
-      );
-
-    });
+      }
+    );
 
   });
 
 
   /* =========================================================
-     PARAMÈTRES DU MENU
+     MENU SETTINGS
      ========================================================= */
 
   const menuSettings =
@@ -743,66 +663,516 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuSettings.forEach((button) => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-      const title =
-        button.querySelector("strong")
-          ?.textContent
-          ?.trim() ||
-        "Option";
+        const title =
+          button.querySelector("strong")
+            ?.textContent
+            ?.trim() ||
+          "Option";
 
 
-      if (title === "Déconnexion") {
+        const messages = {
+
+          "Déconnexion":
+            "🚪 La déconnexion sera disponible avec le compte Nexora.",
+
+          "Ajouter un compte":
+            "➕ L'ajout de comptes multiples arrivera bientôt.",
+
+          "Paramètres et confidentialité":
+            "⚙️ Les paramètres Nexora arrivent bientôt.",
+
+          "Aide et assistance":
+            "❓ Le centre d'aide Nexora arrive bientôt."
+
+        };
+
 
         showToast(
-          "🚪 La déconnexion sera disponible avec le compte Nexora."
-        );
-
-        return;
-      }
-
-
-      if (title === "Ajouter un compte") {
-
-        showToast(
-          "➕ L'ajout de comptes multiples arrivera bientôt."
-        );
-
-        return;
-      }
-
-
-      if (
-        title ===
-        "Paramètres et confidentialité"
-      ) {
-
-        showToast(
-          "⚙️ Les paramètres Nexora arrivent bientôt."
-        );
-
-        return;
-      }
-
-
-      if (
-        title ===
-        "Aide et assistance"
-      ) {
-
-        showToast(
-          "❓ Le centre d'aide Nexora arrive bientôt."
+          messages[title] ||
+          `${title} bientôt disponible.`
         );
 
       }
-
-    });
+    );
 
   });
 
 
   /* =========================================================
-     FERMETURE AVEC ESC
+     MOMENTS EXISTANTS
+     ========================================================= */
+
+  const momentCards =
+    document.querySelectorAll(
+      ".moment-card:not(.create-moment)"
+    );
+
+
+  momentCards.forEach((card) => {
+
+    card.addEventListener(
+      "click",
+      () => {
+
+        const name =
+          card.querySelector("strong")
+            ?.textContent
+            ?.trim() ||
+          "cet utilisateur";
+
+
+        showToast(
+          `✨ Ouverture du Moment de ${name}.`
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     FIL
+     ========================================================= */
+
+  const filterButton =
+    document.getElementById(
+      "filterButton"
+    );
+
+
+  filterButton?.addEventListener(
+    "click",
+    () => {
+
+      showToast(
+        "🎯 Ton fil apprend progressivement ce que tu aimes."
+      );
+
+    }
+  );
+
+
+  /* =========================================================
+     LIKES
+     ========================================================= */
+
+  const likeButtons =
+    document.querySelectorAll(
+      ".like-button"
+    );
+
+
+  likeButtons.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const countElement =
+          button.querySelector(
+            ".like-count"
+          );
+
+        const heart =
+          button.querySelector(
+            ".heart"
+          );
+
+
+        if (!countElement) {
+          return;
+        }
+
+
+        const currentCount =
+          Number.parseInt(
+            countElement.textContent,
+            10
+          ) || 0;
+
+
+        const alreadyLiked =
+          button.classList.contains(
+            "liked"
+          );
+
+
+        if (alreadyLiked) {
+
+          button.classList.remove("liked");
+
+          countElement.textContent =
+            String(
+              Math.max(
+                0,
+                currentCount - 1
+              )
+            );
+
+
+          if (heart) {
+            heart.textContent = "♡";
+          }
+
+          return;
+        }
+
+
+        button.classList.add("liked");
+
+        countElement.textContent =
+          String(currentCount + 1);
+
+
+        if (heart) {
+          heart.textContent = "♥";
+        }
+
+
+        showToast(
+          "❤️ J'aime ajouté."
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     COMMENTAIRES
+     ========================================================= */
+
+  const commentButtons =
+    document.querySelectorAll(
+      ".comment-button"
+    );
+
+
+  commentButtons.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const post =
+          button.closest(".post-card");
+
+        const commentsLink =
+          post?.querySelector(
+            ".comments-link"
+          );
+
+
+        if (commentsLink) {
+
+          commentsLink.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+
+          showToast(
+            "💬 Voici les commentaires."
+          );
+
+          return;
+        }
+
+
+        showToast(
+          "💬 Les commentaires arrivent bientôt."
+        );
+
+      }
+    );
+
+  });
+
+
+  const commentsLinks =
+    document.querySelectorAll(
+      ".comments-link"
+    );
+
+
+  commentsLinks.forEach((link) => {
+
+    link.addEventListener(
+      "click",
+      () => {
+
+        showToast(
+          "💬 L'espace commentaires Nexora arrive bientôt."
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     REPOST
+     ========================================================= */
+
+  const repostButtons =
+    document.querySelectorAll(
+      ".repost-button"
+    );
+
+
+  repostButtons.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const activated =
+          button.classList.toggle(
+            "reposted"
+          );
+
+
+        showToast(
+          activated
+            ? "🔁 Publication repostée."
+            : "Publication retirée de tes reposts."
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     ENREGISTREMENT
+     ========================================================= */
+
+  const saveButtons =
+    document.querySelectorAll(
+      ".save-button"
+    );
+
+
+  saveButtons.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const saved =
+          button.classList.toggle(
+            "saved"
+          );
+
+
+        showToast(
+          saved
+            ? "🔖 Publication enregistrée."
+            : "Publication retirée des enregistrements."
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     PARTAGE
+     ========================================================= */
+
+  const shareButtons =
+    document.querySelectorAll(
+      ".share-button"
+    );
+
+
+  shareButtons.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      async () => {
+
+        const post =
+          button.closest(".post-card");
+
+        const author =
+          post?.querySelector(
+            ".author-name"
+          )?.textContent?.trim() ||
+          "Nexora";
+
+
+        const shareData = {
+
+          title:
+            `Publication de ${author}`,
+
+          text:
+            "Découvre cette publication sur Nexora."
+
+        };
+
+
+        if (
+          typeof navigator.share ===
+          "function"
+        ) {
+
+          try {
+
+            await navigator.share(
+              shareData
+            );
+
+            showToast(
+              "✓ Publication partagée."
+            );
+
+          } catch (error) {
+
+            if (
+              error.name !==
+              "AbortError"
+            ) {
+
+              showToast(
+                "Le partage n'a pas pu être effectué."
+              );
+
+            }
+
+          }
+
+          return;
+        }
+
+
+        showToast(
+          "🔗 Le partage sera bientôt disponible."
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     OPTIONS PUBLICATIONS
+     ========================================================= */
+
+  const moreButtons =
+    document.querySelectorAll(
+      ".more-button"
+    );
+
+
+  moreButtons.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        showToast(
+          "⋯ Options de publication Nexora."
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     VIDÉOS
+     ========================================================= */
+
+  const videoButton =
+    document.getElementById(
+      "videoButton"
+    );
+
+
+  videoButton?.addEventListener(
+    "click",
+    () => {
+
+      showToast(
+        "🎥 Les vidéos Nexora arrivent ici."
+      );
+
+    }
+  );
+
+
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
+
+  const navItems =
+    document.querySelectorAll(
+      ".nav-item"
+    );
+
+
+  navItems.forEach((item) => {
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        const page =
+          item.dataset.page;
+
+
+        navItems.forEach((navItem) => {
+          navItem.classList.remove(
+            "active"
+          );
+        });
+
+
+        item.classList.add("active");
+
+
+        const pageMessages = {
+
+          home:
+            "🏠 Accueil",
+
+          explore:
+            "🧭 Explorer arrive bientôt.",
+
+          messages:
+            "💬 Tes messages arrivent bientôt.",
+
+          profile:
+            "👤 Ton profil arrive bientôt."
+
+        };
+
+
+        showToast(
+          pageMessages[page] ||
+          "Espace Nexora bientôt disponible."
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     ESCAPE
      ========================================================= */
 
   document.addEventListener(
@@ -810,7 +1180,9 @@ document.addEventListener("DOMContentLoaded", () => {
     (event) => {
 
       if (event.key === "Escape") {
+
         closeAllModals();
+
       }
 
     }
@@ -818,7 +1190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     SWIPE MENU
+     SWIPE POUR FERMER LE MENU
      ========================================================= */
 
   let touchStartX = 0;
@@ -850,7 +1222,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       if (distance > 90) {
+
         closeModal(menuModal);
+
       }
 
     },
