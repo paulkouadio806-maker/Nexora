@@ -5,898 +5,889 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#6d28d9">
   <meta name="description" content="Nexora — réseau social centré sur la découverte et la création.">
-
   <title>Nexora</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="app">
 
-    <!-- HEADER NEXORA -->
-    <header class="app-header">
+<div class="app">
 
-      <div class="brand">
-        <span class="brand-n">N</span><span>exora</span>
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="app-header">
+
+    <div class="brand">
+      <span class="brand-n">N</span>
+      <span>exora</span>
+    </div>
+
+    <div class="header-actions">
+
+      <button
+        class="icon-button notification-header"
+        id="notificationButton"
+        aria-label="Notifications"
+        title="Notifications">
+        🔔
+      </button>
+
+      <button
+        class="icon-button"
+        id="searchButton"
+        aria-label="Rechercher"
+        title="Rechercher">
+        <span class="search-icon"></span>
+      </button>
+
+      <button
+        class="icon-button"
+        id="menuButton"
+        aria-label="Menu"
+        title="Menu">
+        <span class="hamburger">
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       CONTENU
+       ===================================================== -->
+
+  <main class="main-content">
+
+    <!-- QUOI DE NEUF -->
+    <section class="composer-card">
+
+      <div class="composer-top">
+
+        <div class="avatar avatar-main">
+          P
+        </div>
+
+        <button
+          class="composer-input"
+          id="openComposer">
+          Quoi de neuf sur Nexora ?
+        </button>
+
+        <!-- NOUVEAU + -->
+        <button
+          class="composer-create-plus"
+          id="composerCreateButton"
+          aria-label="Créer"
+          title="Créer">
+          +
+        </button>
+
       </div>
 
-      <div class="header-actions">
+    </section>
 
-        <!-- NOTIFICATIONS -->
-        <button
-          class="icon-button notification-header"
-          id="notificationButton"
-          aria-label="Notifications"
-          title="Notifications">
-          🔔
-        </button>
 
-        <!-- RECHERCHE -->
-        <button
-          class="icon-button"
-          id="searchButton"
-          aria-label="Rechercher"
-          title="Rechercher">
-          <span class="search-icon"></span>
-        </button>
+    <!-- =====================================================
+         MOMENTS
+         ===================================================== -->
 
-        <!-- MENU -->
+    <section class="section-block moments-section">
+
+      <div class="section-title-row">
+
+        <h2>✨ Moments</h2>
+
+      </div>
+
+
+      <div class="moments-scroll">
+
+        <!-- + MOMENT -->
         <button
-          class="icon-button"
-          id="menuButton"
-          aria-label="Menu"
-          title="Menu">
-          <span class="hamburger">
-            <i></i>
-            <i></i>
-            <i></i>
+          class="moment-card create-moment"
+          id="createMoment">
+
+          <span class="moment-plus">
+            +
           </span>
+
+          <span>
+            Créer un<br>
+            moment
+          </span>
+
+        </button>
+
+
+        <button class="moment-card">
+
+          <div class="moment-image moment-maya">
+            <span class="moment-avatar">M</span>
+          </div>
+
+          <strong>Maya</strong>
+          <small>Nouveau</small>
+
+        </button>
+
+
+        <button class="moment-card">
+
+          <div class="moment-image moment-kevin">
+            <span class="moment-avatar">K</span>
+          </div>
+
+          <strong>Kevin</strong>
+          <small>Nouveau</small>
+
+        </button>
+
+
+        <button class="moment-card">
+
+          <div class="moment-image moment-aya">
+            <span class="moment-avatar">A</span>
+          </div>
+
+          <strong>Aya</strong>
+          <small>Nouveau</small>
+
+        </button>
+
+
+        <button class="moment-card">
+
+          <div class="moment-image moment-sam">
+            <span class="moment-avatar">S</span>
+          </div>
+
+          <strong>Sam</strong>
+          <small>Nouveau</small>
+
         </button>
 
       </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FIL
+         ===================================================== -->
+
+    <section class="feed-section">
+
+      <div class="feed-heading">
+
+        <h2>🔥 Pour vous</h2>
+
+        <button
+          class="filter-button"
+          id="filterButton"
+          aria-label="Personnaliser le fil">
+          ☷
+        </button>
+
+      </div>
+
+
+      <!-- PUBLICATION 1 -->
+
+      <article class="post-card">
+
+        <div class="post-header">
+
+          <div class="post-author">
+
+            <div class="avatar avatar-post">
+              O
+            </div>
+
+            <div>
+
+              <div class="author-name">
+                Otaku Exorciste
+
+                <span class="verified">
+                  ✓
+                </span>
+              </div>
+
+              <div class="post-meta">
+                @otakux · 21 min · 🌐
+              </div>
+
+            </div>
+
+          </div>
+
+          <button
+            class="more-button"
+            aria-label="Options">
+            •••
+          </button>
+
+        </div>
+
+
+        <p class="post-text">
+          Quelle est votre série préférée en ce moment ? 👀
+        </p>
+
+
+        <div class="post-image">
+
+          <div class="anime-character">
+
+            <div class="character-hair"></div>
+
+            <div class="character-face">
+              <span class="eye left"></span>
+              <span class="eye right"></span>
+            </div>
+
+            <div class="character-clothes"></div>
+
+          </div>
+
+          <div class="energy energy-one"></div>
+          <div class="energy energy-two"></div>
+
+          <span class="post-image-label">
+            NEXORA
+          </span>
+
+        </div>
+
+
+        <div class="post-actions">
+
+          <button class="post-action like-button">
+            <span class="action-icon heart">♡</span>
+            <span class="like-count">248</span>
+          </button>
+
+          <button class="post-action comment-button">
+            <span class="action-icon">▢</span>
+            <span>34</span>
+          </button>
+
+          <button class="post-action repost-button">
+            <span class="action-icon">↻</span>
+            <span>12</span>
+          </button>
+
+          <button class="post-action save-button">
+            <span class="action-icon">♧</span>
+          </button>
+
+          <button class="post-action share-button">
+            <span class="action-icon">↗</span>
+          </button>
+
+        </div>
+
+
+        <div class="post-summary">
+
+          <span class="summary-heart">♥</span>
+
+          <strong class="summary-likes">
+            248 J'aime
+          </strong>
+
+          <span>·</span>
+
+          <span>34 commentaires</span>
+
+          <span>·</span>
+
+          <span>12 reposts</span>
+
+        </div>
+
+
+        <div class="featured-comment">
+
+          <div class="avatar avatar-comment">
+            M
+          </div>
+
+          <div class="comment-content">
+
+            <strong>Maya</strong>
+
+            <p>
+              Cette publication est incroyable 😍
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button class="comments-link">
+          Voir les 34 commentaires
+        </button>
+
+      </article>
+
+
+      <!-- PUBLICATION 2 -->
+
+      <article class="post-card second-post">
+
+        <div class="post-header">
+
+          <div class="post-author">
+
+            <div class="avatar avatar-post avatar-blue">
+              L
+            </div>
+
+            <div>
+
+              <div class="author-name">
+                Léo Créatif
+              </div>
+
+              <div class="post-meta">
+                @leo · 38 min · 🌐
+              </div>
+
+            </div>
+
+          </div>
+
+          <button
+            class="more-button"
+            aria-label="Options">
+            •••
+          </button>
+
+        </div>
+
+
+        <p class="post-text">
+          Petite création du jour. Vous en pensez quoi ? ✨
+        </p>
+
+
+        <div class="creative-post">
+
+          <span>NEXORA</span>
+
+          <strong>
+            CREATE<br>
+            DISCOVER<br>
+            SHARE
+          </strong>
+
+        </div>
+
+
+        <div class="post-actions">
+
+          <button class="post-action like-button">
+            <span class="action-icon heart">♡</span>
+            <span class="like-count">96</span>
+          </button>
+
+          <button class="post-action">
+            <span class="action-icon">▢</span>
+            <span>12</span>
+          </button>
+
+          <button class="post-action">
+            <span class="action-icon">↻</span>
+            <span>5</span>
+          </button>
+
+          <button class="post-action">
+            <span class="action-icon">♧</span>
+          </button>
+
+          <button class="post-action">
+            <span class="action-icon">↗</span>
+          </button>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <div class="feed-end">
+
+      <span>✦</span>
+
+      <p>
+        Ton fil Nexora s'adapte progressivement à tes goûts.
+      </p>
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================================
+       NAVIGATION BASSE
+       ===================================================== -->
+
+  <nav class="bottom-navigation">
+
+    <button
+      class="nav-item active"
+      data-page="home">
+
+      <span class="nav-icon">⌂</span>
+      <span>Accueil</span>
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      data-page="explore">
+
+      <span class="nav-icon">◈</span>
+      <span>Explorer</span>
+
+    </button>
+
+
+    <button
+      class="nav-create video-navigation"
+      id="videoButton"
+      aria-label="Vidéos"
+      title="Vidéos">
+
+      <span>▶</span>
+
+    </button>
+
+
+    <button
+      class="nav-item messages-nav"
+      data-page="messages">
+
+      <span class="notification-badge">3</span>
+
+      <span class="nav-icon">▢</span>
+      <span>Messages</span>
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      data-page="profile">
+
+      <span class="nav-avatar">P</span>
+      <span>Profil</span>
+
+    </button>
+
+  </nav>
+
+</div>
+
+
+<!-- =====================================================
+     POPUP DU +
+     PUBLICATION / STORY / NOTE
+     ===================================================== -->
+
+<div
+  class="quick-create-overlay"
+  id="quickCreateOverlay">
+
+  <div
+    class="quick-create-menu"
+    role="dialog"
+    aria-label="Créer">
+
+    <button
+      class="quick-create-option"
+      data-quick-create="Publication">
+
+      <span class="quick-create-icon publication-icon">
+        ◩
+      </span>
+
+      <span>Publication</span>
+
+    </button>
+
+
+    <button
+      class="quick-create-option"
+      data-quick-create="Story">
+
+      <span class="quick-create-icon story-icon">
+        ⊕
+      </span>
+
+      <span>Story</span>
+
+    </button>
+
+
+    <button
+      class="quick-create-option"
+      data-quick-create="Note">
+
+      <span class="quick-create-icon note-icon">
+        ●
+      </span>
+
+      <span>Note</span>
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     NOUVELLE STORY
+     ===================================================== -->
+
+<div
+  class="story-create-overlay"
+  id="storyCreateOverlay">
+
+  <div class="story-create-screen">
+
+    <header class="story-create-header">
+
+      <button
+        class="story-close"
+        id="storyCloseButton"
+        aria-label="Fermer">
+        ×
+      </button>
+
+      <h2>Nouvelle story</h2>
+
+      <button
+        class="story-settings"
+        id="storySettingsButton"
+        aria-label="Paramètres">
+        ⚙
+      </button>
+
     </header>
 
 
-    <!-- CONTENU PRINCIPAL -->
-    <main class="main-content">
+    <div class="story-types">
 
-      <!-- ZONE DE CRÉATION -->
-      <section class="composer-card">
+      <button
+        class="story-type-card"
+        data-story-type="Texte">
 
-        <div class="composer-top">
-
-          <!-- PROFIL À GAUCHE -->
-          <div class="avatar avatar-main">
-            P
-          </div>
-
-          <!-- TEXTE AU CENTRE -->
-          <button
-            class="composer-input"
-            id="openComposer">
-            Quoi de neuf sur Nexora ?
-          </button>
-
-          <!-- + À DROITE -->
-          <button
-            class="camera-button"
-            id="cameraButton"
-            aria-label="Créer"
-            title="Créer">
-            +
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- MOMENTS -->
-      <section class="section-block">
-
-        <div class="section-title-row">
-
-          <h2>✨ Moments</h2>
-
-          <button
-            class="see-all"
-            id="seeMoments">
-            Voir tout
-          </button>
-
-        </div>
-
-
-        <div class="moments-scroll">
-
-          <button
-            class="moment-card create-moment"
-            id="createMoment">
-
-            <span class="moment-plus">+</span>
-
-            <span>
-              Créer un<br>
-              moment
-            </span>
-
-          </button>
-
-
-          <button class="moment-card">
-
-            <div class="moment-image moment-maya">
-              <span class="moment-avatar">M</span>
-            </div>
-
-            <strong>Maya</strong>
-            <small>Nouveau</small>
-
-          </button>
-
-
-          <button class="moment-card">
-
-            <div class="moment-image moment-kevin">
-              <span class="moment-avatar">K</span>
-            </div>
-
-            <strong>Kevin</strong>
-            <small>Nouveau</small>
-
-          </button>
-
-
-          <button class="moment-card">
-
-            <div class="moment-image moment-aya">
-              <span class="moment-avatar">A</span>
-            </div>
-
-            <strong>Aya</strong>
-            <small>Nouveau</small>
-
-          </button>
-
-
-          <button class="moment-card">
-
-            <div class="moment-image moment-sam">
-              <span class="moment-avatar">S</span>
-            </div>
-
-            <strong>Sam</strong>
-            <small>Nouveau</small>
-
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- FIL PERSONNALISÉ -->
-      <section class="feed-section">
-
-        <div class="feed-heading">
-
-          <h2>🔥 Pour vous</h2>
-
-          <button
-            class="filter-button"
-            id="filterButton"
-            aria-label="Personnaliser le fil">
-            ☷
-          </button>
-
-        </div>
-
-
-        <!-- PREMIÈRE PUBLICATION -->
-        <article class="post-card">
-
-          <div class="post-header">
-
-            <div class="post-author">
-
-              <div class="avatar avatar-post">
-                O
-              </div>
-
-              <div>
-
-                <div class="author-name">
-
-                  Otaku Exorciste
-
-                  <span class="verified">
-                    ✓
-                  </span>
-
-                </div>
-
-                <div class="post-meta">
-                  @otakux · 21 min · 🌐
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <button
-              class="more-button"
-              aria-label="Options">
-              •••
-            </button>
-
-          </div>
-
-
-          <p class="post-text">
-            Quelle est votre série préférée en ce moment ? 👀
-          </p>
-
-
-          <div class="post-image">
-
-            <div class="anime-character">
-
-              <div class="character-hair"></div>
-
-              <div class="character-face">
-
-                <span class="eye left"></span>
-                <span class="eye right"></span>
-
-              </div>
-
-              <div class="character-clothes"></div>
-
-            </div>
-
-
-            <div class="energy energy-one"></div>
-            <div class="energy energy-two"></div>
-
-            <span class="post-image-label">
-              NEXORA
-            </span>
-
-          </div>
-
-
-          <div class="post-actions">
-
-            <button class="post-action like-button">
-
-              <span class="action-icon heart">
-                ♡
-              </span>
-
-              <span class="like-count">
-                248
-              </span>
-
-            </button>
-
-
-            <button class="post-action comment-button">
-
-              <span class="action-icon">
-                ▢
-              </span>
-
-              <span>
-                34
-              </span>
-
-            </button>
-
-
-            <button class="post-action repost-button">
-
-              <span class="action-icon">
-                ↻
-              </span>
-
-              <span>
-                12
-              </span>
-
-            </button>
-
-
-            <button class="post-action save-button">
-
-              <span class="action-icon">
-                ♧
-              </span>
-
-            </button>
-
-
-            <button class="post-action share-button">
-
-              <span class="action-icon">
-                ↗
-              </span>
-
-            </button>
-
-          </div>
-
-
-          <div class="post-summary">
-
-            <span class="summary-heart">
-              ♥
-            </span>
-
-            <strong class="summary-likes">
-              248 J'aime
-            </strong>
-
-            <span>·</span>
-
-            <span>
-              34 commentaires
-            </span>
-
-            <span>·</span>
-
-            <span>
-              12 reposts
-            </span>
-
-          </div>
-
-
-          <div class="featured-comment">
-
-            <div class="avatar avatar-comment">
-              M
-            </div>
-
-            <div class="comment-content">
-
-              <strong>
-                Maya
-              </strong>
-
-              <p>
-                Cette publication est incroyable 😍
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <button class="comments-link">
-            Voir les 34 commentaires
-          </button>
-
-        </article>
-
-
-        <!-- DEUXIÈME PUBLICATION -->
-        <article class="post-card second-post">
-
-          <div class="post-header">
-
-            <div class="post-author">
-
-              <div class="avatar avatar-post avatar-blue">
-                L
-              </div>
-
-              <div>
-
-                <div class="author-name">
-                  Léo Créatif
-                </div>
-
-                <div class="post-meta">
-                  @leo · 38 min · 🌐
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <button
-              class="more-button"
-              aria-label="Options">
-              •••
-            </button>
-
-          </div>
-
-
-          <p class="post-text">
-            Petite création du jour. Vous en pensez quoi ? ✨
-          </p>
-
-
-          <div class="creative-post">
-
-            <span>
-              NEXORA
-            </span>
-
-            <strong>
-              CREATE<br>
-              DISCOVER<br>
-              SHARE
-            </strong>
-
-          </div>
-
-
-          <div class="post-actions">
-
-            <button class="post-action like-button">
-
-              <span class="action-icon heart">
-                ♡
-              </span>
-
-              <span class="like-count">
-                96
-              </span>
-
-            </button>
-
-
-            <button class="post-action">
-
-              <span class="action-icon">
-                ▢
-              </span>
-
-              <span>
-                12
-              </span>
-
-            </button>
-
-
-            <button class="post-action">
-
-              <span class="action-icon">
-                ↻
-              </span>
-
-              <span>
-                5
-              </span>
-
-            </button>
-
-
-            <button class="post-action">
-
-              <span class="action-icon">
-                ♧
-              </span>
-
-            </button>
-
-
-            <button class="post-action">
-
-              <span class="action-icon">
-                ↗
-              </span>
-
-            </button>
-
-          </div>
-
-        </article>
-
-      </section>
-
-
-      <div class="feed-end">
-
-        <span>
-          ✦
+        <span class="story-type-icon">
+          Aa
         </span>
 
-        <p>
-          Ton fil Nexora s'adapte progressivement à tes goûts.
-        </p>
+        <strong>Texte</strong>
 
+      </button>
+
+
+      <button
+        class="story-type-card"
+        data-story-type="Musique">
+
+        <span class="story-type-icon">
+          ♫
+        </span>
+
+        <strong>Musique</strong>
+
+      </button>
+
+
+      <button
+        class="story-type-card"
+        data-story-type="Caméra">
+
+        <span class="story-type-icon">
+          ◎
+        </span>
+
+        <strong>Caméra</strong>
+
+      </button>
+
+    </div>
+
+
+    <div class="story-camera-row">
+
+      <h3>Caméra <span>⌄</span></h3>
+
+      <button
+        class="story-selection-button"
+        id="storySelectionButton">
+
+        <span>✓</span>
+        Sélection
+
+      </button>
+
+    </div>
+
+
+    <div class="story-gallery">
+
+      <div class="story-gallery-item gallery-purple">
+        <span>NEXORA</span>
       </div>
 
-    </main>
-
-
-    <!-- NAVIGATION INFÉRIEURE -->
-    <nav class="bottom-navigation">
-
-      <button
-        class="nav-item active"
-        data-page="home">
-
-        <span class="nav-icon">
-          ⌂
-        </span>
-
-        <span>
-          Accueil
-        </span>
-
-      </button>
-
-
-      <button
-        class="nav-item"
-        data-page="explore">
-
-        <span class="nav-icon">
-          ◈
-        </span>
-
-        <span>
-          Explorer
-        </span>
-
-      </button>
-
-
-      <!-- VIDÉO À LA PLACE DU + -->
-      <button
-        class="nav-create video-navigation"
-        id="videoButton"
-        aria-label="Vidéos"
-        title="Vidéos">
-
-        <span>
-          ▶
-        </span>
-
-      </button>
-
-
-      <button
-        class="nav-item messages-nav"
-        data-page="messages">
-
-        <span class="notification-badge">
-          3
-        </span>
-
-        <span class="nav-icon">
-          ▢
-        </span>
-
-        <span>
-          Messages
-        </span>
-
-      </button>
-
-
-      <button
-        class="nav-item"
-        data-page="profile">
-
-        <span class="nav-avatar">
-          P
-        </span>
-
-        <span>
-          Profil
-        </span>
-
-      </button>
-
-    </nav>
-
-  </div>
-
-
-  <!-- MODALE DE CRÉATION -->
-  <div
-    class="modal-overlay"
-    id="createModal">
-
-    <div class="modal">
-
-      <div class="modal-header">
-
-        <h2>
-          Créer sur Nexora
-        </h2>
-
-        <button
-          class="modal-close"
-          data-close-modal>
-          ×
-        </button>
-
+      <div class="story-gallery-item gallery-dark">
+        <span>CREATE</span>
       </div>
 
+      <div class="story-gallery-item gallery-pink">
+        <span>MOMENTS</span>
+      </div>
 
-      <p class="modal-subtitle">
-        Partage quelque chose avec ta communauté.
-      </p>
+      <div class="story-gallery-item gallery-blue">
+        <span>DISCOVER</span>
+      </div>
 
+      <div class="story-gallery-item gallery-violet">
+        <span>SHARE</span>
+      </div>
 
-      <div class="creation-grid">
-
-        <button
-          class="creation-choice photo"
-          data-modal-create="Photo">
-
-          <span>▧</span>
-          <strong>Photo</strong>
-
-        </button>
-
-
-        <button
-          class="creation-choice video"
-          data-modal-create="Vidéo">
-
-          <span>▣</span>
-          <strong>Vidéo</strong>
-
-        </button>
-
-
-        <button
-          class="creation-choice text"
-          data-modal-create="Texte">
-
-          <span>✎</span>
-          <strong>Texte</strong>
-
-        </button>
-
-
-        <button
-          class="creation-choice music"
-          data-modal-create="Musique">
-
-          <span>♫</span>
-          <strong>Musique</strong>
-
-        </button>
-
-
-        <button
-          class="creation-choice place"
-          data-modal-create="Lieu">
-
-          <span>⌖</span>
-          <strong>Lieu</strong>
-
-        </button>
-
-
-        <button
-          class="creation-choice moment"
-          data-modal-create="Moment">
-
-          <span>✦</span>
-          <strong>Moment</strong>
-
-        </button>
-
+      <div class="story-gallery-item gallery-black">
+        <span>NEXORA</span>
       </div>
 
     </div>
 
   </div>
 
-
-  <!-- MODALE MENU -->
-  <div
-    class="modal-overlay"
-    id="menuModal">
-
-    <div class="menu-panel">
-
-      <div class="menu-header">
-
-        <button
-          class="back-button"
-          data-close-menu>
-          ‹
-        </button>
-
-        <h2>
-          Menu
-        </h2>
-
-        <button
-          class="menu-search"
-          id="menuSearchButton">
-          ⌕
-        </button>
-
-      </div>
-
-
-      <div class="menu-profile">
-
-        <div class="avatar avatar-menu">
-          P
-        </div>
-
-        <div>
-
-          <strong>
-            Paul
-          </strong>
-
-          <span>
-            Voir votre profil
-          </span>
-
-        </div>
-
-        <button>
-          ⌄
-        </button>
-
-      </div>
-
-
-      <div class="menu-grid">
-
-        <button
-          class="menu-card"
-          data-menu-item="Messages">
-
-          <span>💬</span>
-          <strong>Messages</strong>
-
-        </button>
-
-
-        <button
-          class="menu-card"
-          data-menu-item="Amis">
-
-          <span>👥</span>
-          <strong>Amis</strong>
-
-        </button>
-
-
-        <button
-          class="menu-card"
-          data-menu-item="Moments">
-
-          <span>✨</span>
-          <strong>Moments</strong>
-
-        </button>
-
-
-        <button
-          class="menu-card"
-          data-menu-item="Enregistrements">
-
-          <span>🔖</span>
-          <strong>Enregistrements</strong>
-
-        </button>
-
-
-        <button
-          class="menu-card"
-          data-menu-item="Notifications">
-
-          <span>🔔</span>
-          <strong>Notifications</strong>
-
-        </button>
-
-
-        <button
-          class="menu-card"
-          data-menu-item="Communautés">
-
-          <span>👨‍👩‍👧‍👦</span>
-          <strong>Communautés</strong>
-
-        </button>
-
-
-        <button
-          class="menu-card"
-          data-menu-item="Découvrir">
-
-          <span>🧭</span>
-          <strong>Découvrir</strong>
-
-        </button>
-
-
-        <button
-          class="menu-card"
-          data-menu-item="Événements">
-
-          <span>📅</span>
-          <strong>Événements</strong>
-
-        </button>
-
-      </div>
-
-
-      <div class="menu-settings">
-
-        <button>
-
-          <span>⚙️</span>
-
-          <strong>
-            Paramètres et confidentialité
-          </strong>
-
-          <span>⌄</span>
-
-        </button>
-
-
-        <button>
-
-          <span>❔</span>
-
-          <strong>
-            Aide et assistance
-          </strong>
-
-          <span>⌄</span>
-
-        </button>
-
-
-        <button>
-
-          <span>➕</span>
-
-          <strong>
-            Ajouter un compte
-          </strong>
-
-        </button>
-
-
-        <button class="logout-button">
-
-          <span>🚪</span>
-
-          <strong>
-            Déconnexion
-          </strong>
-
-        </button>
-
-      </div>
+</div>
+
+
+<!-- =====================================================
+     ANCIENNE MODALE CRÉATION
+     ===================================================== -->
+
+<div
+  class="modal-overlay"
+  id="createModal">
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <h2>Créer sur Nexora</h2>
+
+      <button
+        class="modal-close"
+        data-close-modal>
+        ×
+      </button>
+
+    </div>
+
+    <p class="modal-subtitle">
+      Partage quelque chose avec ta communauté.
+    </p>
+
+    <div class="creation-grid">
+
+      <button
+        class="creation-choice photo"
+        data-modal-create="Photo">
+        <span>▧</span>
+        <strong>Photo</strong>
+      </button>
+
+      <button
+        class="creation-choice video"
+        data-modal-create="Vidéo">
+        <span>▣</span>
+        <strong>Vidéo</strong>
+      </button>
+
+      <button
+        class="creation-choice text"
+        data-modal-create="Texte">
+        <span>✎</span>
+        <strong>Texte</strong>
+      </button>
+
+      <button
+        class="creation-choice music"
+        data-modal-create="Musique">
+        <span>♫</span>
+        <strong>Musique</strong>
+      </button>
+
+      <button
+        class="creation-choice place"
+        data-modal-create="Lieu">
+        <span>⌖</span>
+        <strong>Lieu</strong>
+      </button>
+
+      <button
+        class="creation-choice moment"
+        data-modal-create="Moment">
+        <span>✦</span>
+        <strong>Moment</strong>
+      </button>
 
     </div>
 
   </div>
 
+</div>
 
-  <!-- TOAST -->
-  <div
-    class="toast"
-    id="toast">
+
+<!-- =====================================================
+     MENU
+     ===================================================== -->
+
+<div
+  class="modal-overlay"
+  id="menuModal">
+
+  <div class="menu-panel">
+
+    <div class="menu-header">
+
+      <button
+        class="back-button"
+        data-close-menu>
+        ‹
+      </button>
+
+      <h2>Menu</h2>
+
+      <button
+        class="menu-search"
+        id="menuSearchButton">
+        ⌕
+      </button>
+
+    </div>
+
+
+    <div class="menu-profile">
+
+      <div class="avatar avatar-menu">
+        P
+      </div>
+
+      <div>
+        <strong>Paul</strong>
+        <span>Voir votre profil</span>
+      </div>
+
+      <button>⌄</button>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+      <button class="menu-card" data-menu-item="Messages">
+        <span>💬</span>
+        <strong>Messages</strong>
+      </button>
+
+      <button class="menu-card" data-menu-item="Amis">
+        <span>👥</span>
+        <strong>Amis</strong>
+      </button>
+
+      <button class="menu-card" data-menu-item="Moments">
+        <span>✨</span>
+        <strong>Moments</strong>
+      </button>
+
+      <button class="menu-card" data-menu-item="Enregistrements">
+        <span>🔖</span>
+        <strong>Enregistrements</strong>
+      </button>
+
+      <button class="menu-card" data-menu-item="Notifications">
+        <span>🔔</span>
+        <strong>Notifications</strong>
+      </button>
+
+      <button class="menu-card" data-menu-item="Communautés">
+        <span>👨‍👩‍👧‍👦</span>
+        <strong>Communautés</strong>
+      </button>
+
+      <button class="menu-card" data-menu-item="Découvrir">
+        <span>🧭</span>
+        <strong>Découvrir</strong>
+      </button>
+
+      <button class="menu-card" data-menu-item="Événements">
+        <span>📅</span>
+        <strong>Événements</strong>
+      </button>
+
+    </div>
+
+
+    <div class="menu-settings">
+
+      <button>
+        <span>⚙️</span>
+        <strong>Paramètres et confidentialité</strong>
+        <span>⌄</span>
+      </button>
+
+      <button>
+        <span>❔</span>
+        <strong>Aide et assistance</strong>
+        <span>⌄</span>
+      </button>
+
+      <button>
+        <span>➕</span>
+        <strong>Ajouter un compte</strong>
+      </button>
+
+      <button class="logout-button">
+        <span>🚪</span>
+        <strong>Déconnexion</strong>
+      </button>
+
+    </div>
+
   </div>
 
+</div>
 
-  <script src="script.js"></script>
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast">
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
-  </html>
+        </html>
