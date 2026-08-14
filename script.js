@@ -2,10 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================================================
-     ELEMENTS PRINCIPAUX
-     ========================================================= */
-
   const createModal =
     document.getElementById("createModal");
 
@@ -15,17 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const toast =
     document.getElementById("toast");
 
-  const quickCreateOverlay =
-    document.getElementById("quickCreateOverlay");
-
-  const storyCreateOverlay =
-    document.getElementById("storyCreateOverlay");
-
   let toastTimer = null;
 
 
   /* =========================================================
-     TOAST
+     UTILITAIRES
      ========================================================= */
 
   function showToast(message) {
@@ -37,36 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(toastTimer);
 
     toast.textContent = message;
+
     toast.classList.add("show");
 
     toastTimer = setTimeout(() => {
+
       toast.classList.remove("show");
+
     }, 2400);
+
   }
 
-
-  /* =========================================================
-     BODY SCROLL
-     ========================================================= */
-
-  function updateBodyScroll() {
-
-    const somethingOpen =
-      createModal?.classList.contains("open") ||
-      menuModal?.classList.contains("open") ||
-      quickCreateOverlay?.classList.contains("open") ||
-      storyCreateOverlay?.classList.contains("open");
-
-    document.body.classList.toggle(
-      "modal-open",
-      Boolean(somethingOpen)
-    );
-  }
-
-
-  /* =========================================================
-     MODALES
-     ========================================================= */
 
   function openModal(modal) {
 
@@ -75,7 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     modal.classList.add("open");
-    updateBodyScroll();
+
+    document.body.style.overflow = "hidden";
+
   }
 
 
@@ -86,310 +59,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     modal.classList.remove("open");
-    updateBodyScroll();
-  }
 
+    const createIsOpen =
+      createModal?.classList.contains("open");
 
-  function closeQuickCreate() {
+    const menuIsOpen =
+      menuModal?.classList.contains("open");
 
-    quickCreateOverlay?.classList.remove("open");
-    updateBodyScroll();
-  }
+    if (!createIsOpen && !menuIsOpen) {
 
+      document.body.style.overflow = "";
 
-  function openStoryCreate() {
-
-    if (!storyCreateOverlay) {
-      return;
     }
 
-    storyCreateOverlay.classList.add("open");
-    updateBodyScroll();
-  }
-
-
-  function closeStoryCreate() {
-
-    storyCreateOverlay?.classList.remove("open");
-    updateBodyScroll();
   }
 
 
   function closeAllModals() {
 
     createModal?.classList.remove("open");
-    menuModal?.classList.remove("open");
-    quickCreateOverlay?.classList.remove("open");
-    storyCreateOverlay?.classList.remove("open");
 
-    updateBodyScroll();
+    menuModal?.classList.remove("open");
+
+    document.body.style.overflow = "";
+
   }
 
 
   /* =========================================================
-     NOUVEAU + DEVANT "QUOI DE NEUF"
+     CRÉATION
      ========================================================= */
 
   const composerCreateButton =
     document.getElementById("composerCreateButton");
 
-
-  composerCreateButton?.addEventListener("click", (event) => {
-
-    event.stopPropagation();
-
-    quickCreateOverlay?.classList.add("open");
-
-    updateBodyScroll();
-
-  });
-
-
-  /* =========================================================
-     CLIC SUR PUBLICATION / STORY / NOTE
-     ========================================================= */
-
-  const quickCreateOptions =
-    document.querySelectorAll(
-      "[data-quick-create]"
-    );
-
-
-  quickCreateOptions.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      const type =
-        button.dataset.quickCreate;
-
-      closeQuickCreate();
-
-
-      if (type === "Story") {
-
-        openStoryCreate();
-
-        return;
-      }
-
-
-      if (type === "Publication") {
-
-        showToast(
-          "📝 Création d'une publication Nexora."
-        );
-
-        openModal(createModal);
-
-        return;
-      }
-
-
-      if (type === "Note") {
-
-        showToast(
-          "💬 Création d'une note Nexora bientôt disponible."
-        );
-
-      }
-
-    });
-
-  });
-
-
-  /* =========================================================
-     FERMETURE POPUP RAPIDE
-     ========================================================= */
-
-  quickCreateOverlay?.addEventListener(
-    "click",
-    (event) => {
-
-      if (
-        event.target === quickCreateOverlay
-      ) {
-
-        closeQuickCreate();
-
-      }
-
-    }
-  );
-
-
-  /* =========================================================
-     MOMENT +
-     ========================================================= */
+  const openComposer =
+    document.getElementById("openComposer");
 
   const createMoment =
     document.getElementById("createMoment");
 
 
-  createMoment?.addEventListener("click", () => {
-
-    openStoryCreate();
-
-  });
-
-
-  /* =========================================================
-     FERMETURE NOUVELLE STORY
-     ========================================================= */
-
-  const storyCloseButton =
-    document.getElementById("storyCloseButton");
-
-
-  storyCloseButton?.addEventListener(
-    "click",
-    () => {
-      closeStoryCreate();
-    }
-  );
-
-
-  storyCreateOverlay?.addEventListener(
-    "click",
-    (event) => {
-
-      if (
-        event.target === storyCreateOverlay
-      ) {
-
-        closeStoryCreate();
-
-      }
-
-    }
-  );
-
-
-  /* =========================================================
-     TYPES DE STORY
-     ========================================================= */
-
-  const storyTypeCards =
-    document.querySelectorAll(
-      ".story-type-card"
-    );
-
-
-  storyTypeCards.forEach((card) => {
-
-    card.addEventListener("click", () => {
-
-      const type =
-        card.dataset.storyType ||
-        "contenu";
-
-
-      if (type === "Texte") {
-
-        showToast(
-          "✍️ Création d'une story texte."
-        );
-
-        return;
-      }
-
-
-      if (type === "Musique") {
-
-        showToast(
-          "🎵 Sélection de musique bientôt disponible."
-        );
-
-        return;
-      }
-
-
-      if (type === "Caméra") {
-
-        showToast(
-          "📷 Caméra Nexora bientôt disponible."
-        );
-
-      }
-
-    });
-
-  });
-
-
-  /* =========================================================
-     PARAMÈTRES STORY
-     ========================================================= */
-
-  const storySettingsButton =
-    document.getElementById(
-      "storySettingsButton"
-    );
-
-
-  storySettingsButton?.addEventListener(
+  composerCreateButton?.addEventListener(
     "click",
     () => {
 
-      showToast(
-        "⚙️ Paramètres de story bientôt disponibles."
-      );
+      openModal(createModal);
 
     }
   );
-
-
-  /* =========================================================
-     SÉLECTION STORY
-     ========================================================= */
-
-  const storySelectionButton =
-    document.getElementById(
-      "storySelectionButton"
-    );
-
-
-  storySelectionButton?.addEventListener(
-    "click",
-    () => {
-
-      showToast(
-        "🖼️ Sélection de contenu bientôt disponible."
-      );
-
-    }
-  );
-
-
-  /* =========================================================
-     GALERIE STORY
-     ========================================================= */
-
-  const storyGalleryItems =
-    document.querySelectorAll(
-      ".story-gallery-item"
-    );
-
-
-  storyGalleryItems.forEach((item, index) => {
-
-    item.addEventListener("click", () => {
-
-      showToast(
-        `🖼️ Élément ${index + 1} sélectionné.`
-      );
-
-    });
-
-  });
-
-
-  /* =========================================================
-     ANCIENNE CRÉATION
-     ========================================================= */
-
-  const openComposer =
-    document.getElementById("openComposer");
 
 
   openComposer?.addEventListener(
@@ -402,6 +120,20 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
+  createMoment?.addEventListener(
+    "click",
+    () => {
+
+      openModal(createModal);
+
+    }
+  );
+
+
+  /* =========================================================
+     FERMETURE CRÉATION
+     ========================================================= */
+
   const createCloseButton =
     createModal?.querySelector(
       "[data-close-modal]"
@@ -411,7 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
   createCloseButton?.addEventListener(
     "click",
     () => {
+
       closeModal(createModal);
+
     }
   );
 
@@ -421,12 +155,18 @@ document.addEventListener("DOMContentLoaded", () => {
     (event) => {
 
       if (event.target === createModal) {
+
         closeModal(createModal);
+
       }
 
     }
   );
 
+
+  /* =========================================================
+     CHOIX DE CRÉATION
+     ========================================================= */
 
   const creationButtons =
     document.querySelectorAll(
@@ -481,6 +221,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
+     CAMÉRA / CRÉATION
+     ========================================================= */
+
+  const cameraButton =
+    document.getElementById("cameraButton");
+
+
+  cameraButton?.addEventListener(
+    "click",
+    () => {
+
+      openModal(createModal);
+
+    }
+  );
+
+
+  /* =========================================================
+     VIDÉOS — BOUTON DU HAUT / VIDÉO
+     ========================================================= */
+
+  const videoButton =
+    document.getElementById("videoButton");
+
+
+  videoButton?.addEventListener(
+    "click",
+    () => {
+
+      showToast(
+        "🎥 Les vidéos Nexora arrivent ici."
+      );
+
+    }
+  );
+
+
+  const bottomVideoButton =
+    document.getElementById("bottomVideoButton");
+
+
+  bottomVideoButton?.addEventListener(
+    "click",
+    () => {
+
+      showToast(
+        "🎥 Espace vidéos Nexora."
+      );
+
+    }
+  );
+
+
+  /* =========================================================
      NOTIFICATIONS
      ========================================================= */
 
@@ -503,36 +297,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     RECHERCHE
+     EXPLORER — NOUVEAU BOUTON DU HAUT
      ========================================================= */
 
-  const searchButton =
-    document.getElementById("searchButton");
-
-  const menuSearchButton =
+  const topExploreButton =
     document.getElementById(
-      "menuSearchButton"
+      "topExploreButton"
     );
 
 
-  searchButton?.addEventListener(
+  topExploreButton?.addEventListener(
     "click",
     () => {
 
       showToast(
-        "🔎 Recherche Nexora bientôt disponible."
-      );
-
-    }
-  );
-
-
-  menuSearchButton?.addEventListener(
-    "click",
-    () => {
-
-      showToast(
-        "🔎 Recherche dans Nexora bientôt disponible."
+        "🧭 Explorer — découvre du contenu adapté à tes goûts."
       );
 
     }
@@ -578,7 +357,9 @@ document.addEventListener("DOMContentLoaded", () => {
     (event) => {
 
       if (event.target === menuModal) {
+
         closeModal(menuModal);
+
       }
 
     }
@@ -586,124 +367,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     MENU CARTES
+     RECHERCHE DU MENU
      ========================================================= */
 
-  const menuCards =
-    document.querySelectorAll(
-      ".menu-card"
+  const menuSearchButton =
+    document.getElementById(
+      "menuSearchButton"
     );
 
 
-  const menuMessages = {
+  menuSearchButton?.addEventListener(
+    "click",
+    () => {
 
-    Messages:
-      "💬 Ton espace de messages Nexora.",
+      showToast(
+        "🔎 Recherche dans Nexora bientôt disponible."
+      );
 
-    Amis:
-      "👥 Ton espace Amis Nexora.",
-
-    Moments:
-      "✨ Retrouve ici tous tes Moments.",
-
-    Enregistrements:
-      "🔖 Retrouve tes contenus enregistrés.",
-
-    Notifications:
-      "🔔 Tes notifications Nexora.",
-
-    Communautés:
-      "👥 Découvre les communautés Nexora.",
-
-    Découvrir:
-      "🧭 Découvre du contenu adapté à tes goûts.",
-
-    Événements:
-      "📅 Les événements Nexora arrivent bientôt."
-
-  };
-
-
-  menuCards.forEach((card) => {
-
-    card.addEventListener(
-      "click",
-      () => {
-
-        const item =
-          card.dataset.menuItem ||
-          card.querySelector("strong")
-            ?.textContent
-            ?.trim() ||
-          "Fonctionnalité";
-
-
-        closeModal(menuModal);
-
-        showToast(
-          menuMessages[item] ||
-          `${item} — bientôt disponible.`
-        );
-
-      }
-    );
-
-  });
+    }
+  );
 
 
   /* =========================================================
-     MENU SETTINGS
-     ========================================================= */
-
-  const menuSettings =
-    document.querySelectorAll(
-      ".menu-settings button"
-    );
-
-
-  menuSettings.forEach((button) => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        const title =
-          button.querySelector("strong")
-            ?.textContent
-            ?.trim() ||
-          "Option";
-
-
-        const messages = {
-
-          "Déconnexion":
-            "🚪 La déconnexion sera disponible avec le compte Nexora.",
-
-          "Ajouter un compte":
-            "➕ L'ajout de comptes multiples arrivera bientôt.",
-
-          "Paramètres et confidentialité":
-            "⚙️ Les paramètres Nexora arrivent bientôt.",
-
-          "Aide et assistance":
-            "❓ Le centre d'aide Nexora arrive bientôt."
-
-        };
-
-
-        showToast(
-          messages[title] ||
-          `${title} bientôt disponible.`
-        );
-
-      }
-    );
-
-  });
-
-
-  /* =========================================================
-     MOMENTS EXISTANTS
+     MOMENTS
      ========================================================= */
 
   const momentCards =
@@ -724,7 +410,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ?.trim() ||
           "cet utilisateur";
 
-
         showToast(
           `✨ Ouverture du Moment de ${name}.`
         );
@@ -736,13 +421,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     FIL
+     FIL PERSONNALISÉ
      ========================================================= */
 
   const filterButton =
-    document.getElementById(
-      "filterButton"
-    );
+    document.getElementById("filterButton");
 
 
   filterButton?.addEventListener(
@@ -804,7 +487,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (alreadyLiked) {
 
-          button.classList.remove("liked");
+          button.classList.remove(
+            "liked"
+          );
 
           countElement.textContent =
             String(
@@ -816,27 +501,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
           if (heart) {
+
             heart.textContent = "♡";
+
           }
 
-          return;
+        } else {
+
+          button.classList.add(
+            "liked"
+          );
+
+          countElement.textContent =
+            String(
+              currentCount + 1
+            );
+
+
+          if (heart) {
+
+            heart.textContent = "♥";
+
+          }
+
+
+          showToast(
+            "❤️ J'aime ajouté."
+          );
+
         }
-
-
-        button.classList.add("liked");
-
-        countElement.textContent =
-          String(currentCount + 1);
-
-
-        if (heart) {
-          heart.textContent = "♥";
-        }
-
-
-        showToast(
-          "❤️ J'aime ajouté."
-        );
 
       }
     );
@@ -861,7 +554,10 @@ document.addEventListener("DOMContentLoaded", () => {
       () => {
 
         const post =
-          button.closest(".post-card");
+          button.closest(
+            ".post-card"
+          );
+
 
         const commentsLink =
           post?.querySelector(
@@ -876,17 +572,18 @@ document.addEventListener("DOMContentLoaded", () => {
             block: "center"
           });
 
+
           showToast(
             "💬 Voici les commentaires."
           );
 
-          return;
+        } else {
+
+          showToast(
+            "💬 Les commentaires arrivent bientôt."
+          );
+
         }
-
-
-        showToast(
-          "💬 Les commentaires arrivent bientôt."
-        );
 
       }
     );
@@ -951,7 +648,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     ENREGISTREMENT
+     ENREGISTREMENTS
      ========================================================= */
 
   const saveButtons =
@@ -1001,12 +698,17 @@ document.addEventListener("DOMContentLoaded", () => {
       async () => {
 
         const post =
-          button.closest(".post-card");
+          button.closest(
+            ".post-card"
+          );
+
 
         const author =
           post?.querySelector(
             ".author-name"
-          )?.textContent?.trim() ||
+          )
+          ?.textContent
+          ?.trim() ||
           "Nexora";
 
 
@@ -1021,16 +723,14 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
 
-        if (
-          typeof navigator.share ===
-          "function"
-        ) {
+        if (navigator.share) {
 
           try {
 
             await navigator.share(
               shareData
             );
+
 
             showToast(
               "✓ Publication partagée."
@@ -1051,13 +751,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           }
 
-          return;
+        } else {
+
+          showToast(
+            "🔗 Le partage sera bientôt disponible."
+          );
+
         }
-
-
-        showToast(
-          "🔗 Le partage sera bientôt disponible."
-        );
 
       }
     );
@@ -1092,28 +792,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     VIDÉOS
-     ========================================================= */
-
-  const videoButton =
-    document.getElementById(
-      "videoButton"
-    );
-
-
-  videoButton?.addEventListener(
-    "click",
-    () => {
-
-      showToast(
-        "🎥 Les vidéos Nexora arrivent ici."
-      );
-
-    }
-  );
-
-
-  /* =========================================================
      NAVIGATION
      ========================================================= */
 
@@ -1134,13 +812,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         navItems.forEach((navItem) => {
+
           navItem.classList.remove(
             "active"
           );
+
         });
 
 
-        item.classList.add("active");
+        item.classList.add(
+          "active"
+        );
 
 
         const pageMessages = {
@@ -1148,8 +830,8 @@ document.addEventListener("DOMContentLoaded", () => {
           home:
             "🏠 Accueil",
 
-          explore:
-            "🧭 Explorer arrive bientôt.",
+          friends:
+            "👥 Ton espace Amis arrive bientôt.",
 
           messages:
             "💬 Tes messages arrivent bientôt.",
@@ -1172,7 +854,150 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     ESCAPE
+     MENU — CARTES
+     ========================================================= */
+
+  const menuCards =
+    document.querySelectorAll(
+      ".menu-card"
+    );
+
+
+  const menuMessages = {
+
+    Messages:
+      "💬 Ton espace de messages Nexora.",
+
+    Amis:
+      "👥 Ton espace Amis Nexora.",
+
+    Moments:
+      "✨ Retrouve ici tous tes Moments.",
+
+    Enregistrements:
+      "🔖 Retrouve tes contenus enregistrés.",
+
+    Notifications:
+      "🔔 Tes notifications Nexora.",
+
+    Communautés:
+      "👥 Découvre les communautés Nexora.",
+
+    Découvrir:
+      "🧭 Découvre du contenu adapté à tes goûts.",
+
+    Événements:
+      "📅 Les événements Nexora arrivent bientôt."
+
+  };
+
+
+  menuCards.forEach((card) => {
+
+    card.addEventListener(
+      "click",
+      () => {
+
+        const item =
+          card.dataset.menuItem ||
+          card.querySelector("strong")
+            ?.textContent
+            ?.trim() ||
+          "Fonctionnalité";
+
+
+        closeModal(menuModal);
+
+
+        showToast(
+          menuMessages[item] ||
+          `${item} — bientôt disponible.`
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     PARAMÈTRES DU MENU
+     ========================================================= */
+
+  const menuSettings =
+    document.querySelectorAll(
+      ".menu-settings button"
+    );
+
+
+  menuSettings.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const title =
+          button.querySelector("strong")
+            ?.textContent
+            ?.trim() ||
+          "Option";
+
+
+        if (title === "Déconnexion") {
+
+          showToast(
+            "🚪 La déconnexion sera disponible avec le compte Nexora."
+          );
+
+          return;
+
+        }
+
+
+        if (title === "Ajouter un compte") {
+
+          showToast(
+            "➕ L'ajout de comptes multiples arrivera bientôt."
+          );
+
+          return;
+
+        }
+
+
+        if (
+          title ===
+          "Paramètres et confidentialité"
+        ) {
+
+          showToast(
+            "⚙️ Les paramètres Nexora arrivent bientôt."
+          );
+
+          return;
+
+        }
+
+
+        if (
+          title ===
+          "Aide et assistance"
+        ) {
+
+          showToast(
+            "❓ Le centre d'aide Nexora arrive bientôt."
+          );
+
+        }
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
+     FERMETURE AVEC ESC
      ========================================================= */
 
   document.addEventListener(
@@ -1190,7 +1015,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     SWIPE POUR FERMER LE MENU
+     SWIPE MENU
      ========================================================= */
 
   let touchStartX = 0;
@@ -1216,6 +1041,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const touchEndX =
         event.changedTouches[0].screenX;
+
 
       const distance =
         touchEndX - touchStartX;
