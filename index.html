@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="theme-color"
-    content="#6d28d9"
-  >
+  <meta name="theme-color" content="#6d28d9">
 
   <meta
     name="description"
@@ -16,19 +13,14 @@
 
   <title>Nexora</title>
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <div class="app">
 
-    <!-- =====================================================
-         HEADER NEXORA
-         ===================================================== -->
+    <!-- HEADER -->
 
     <header class="app-header">
 
@@ -36,7 +28,6 @@
         <span class="brand-n">N</span>
         <span>exora</span>
       </div>
-
 
       <div class="header-actions">
 
@@ -47,20 +38,8 @@
           aria-label="Notifications"
           title="Notifications"
         >
-          🔔
+          <span class="notification-icon">🔔</span>
         </button>
-
-
-        <!-- EXPLORER -->
-        <button
-          class="icon-button"
-          id="topExploreButton"
-          aria-label="Explorer"
-          title="Explorer"
-        >
-          <span class="search-icon"></span>
-        </button>
-
 
         <!-- MENU -->
         <button
@@ -81,28 +60,20 @@
     </header>
 
 
-    <!-- =====================================================
-         CONTENU PRINCIPAL
-         ===================================================== -->
+    <!-- CONTENU PRINCIPAL -->
 
     <main class="main-content">
 
-
-      <!-- ===================================================
-           ZONE DE CRÉATION
-           =================================================== -->
+      <!-- CRÉATION -->
 
       <section class="composer-card">
 
         <div class="composer-top">
 
-          <!-- PROFIL -->
           <div class="avatar avatar-main">
             P
           </div>
 
-
-          <!-- ZONE "QUOI DE NEUF" -->
           <button
             class="composer-input"
             id="openComposer"
@@ -110,11 +81,10 @@
             Quoi de neuf sur Nexora ?
           </button>
 
-
-          <!-- BOUTON + -->
+          <!-- PLUS NEXORA -->
           <button
-            class="camera-button"
-            id="cameraButton"
+            class="composer-create-plus"
+            id="composerCreateButton"
             aria-label="Créer"
             title="Créer"
           >
@@ -126,9 +96,7 @@
       </section>
 
 
-      <!-- ===================================================
-           MOMENTS
-           =================================================== -->
+      <!-- MOMENTS -->
 
       <section class="section-block">
 
@@ -138,22 +106,15 @@
             ✨ Moments
           </h2>
 
-          <!--
-            "Voir tout" supprimé comme demandé.
-          -->
-
         </div>
 
 
         <div class="moments-scroll">
 
-
-          <!-- CRÉER UN MOMENT -->
           <button
             class="moment-card create-moment"
             id="createMoment"
           >
-
             <span class="moment-plus">
               +
             </span>
@@ -162,11 +123,9 @@
               Créer un<br>
               moment
             </span>
-
           </button>
 
 
-          <!-- MAYA -->
           <button class="moment-card">
 
             <div class="moment-image moment-maya">
@@ -175,18 +134,12 @@
               </span>
             </div>
 
-            <strong>
-              Maya
-            </strong>
-
-            <small>
-              Nouveau
-            </small>
+            <strong>Maya</strong>
+            <small>Nouveau</small>
 
           </button>
 
 
-          <!-- KEVIN -->
           <button class="moment-card">
 
             <div class="moment-image moment-kevin">
@@ -195,18 +148,12 @@
               </span>
             </div>
 
-            <strong>
-              Kevin
-            </strong>
-
-            <small>
-              Nouveau
-            </small>
+            <strong>Kevin</strong>
+            <small>Nouveau</small>
 
           </button>
 
 
-          <!-- AYA -->
           <button class="moment-card">
 
             <div class="moment-image moment-aya">
@@ -215,18 +162,12 @@
               </span>
             </div>
 
-            <strong>
-              Aya
-            </strong>
-
-            <small>
-              Nouveau
-            </small>
+            <strong>Aya</strong>
+            <small>Nouveau</small>
 
           </button>
 
 
-          <!-- SAM -->
           <button class="moment-card">
 
             <div class="moment-image moment-sam">
@@ -235,13 +176,8 @@
               </span>
             </div>
 
-            <strong>
-              Sam
-            </strong>
-
-            <small>
-              Nouveau
-            </small>
+            <strong>Sam</strong>
+            <small>Nouveau</small>
 
           </button>
 
@@ -250,9 +186,7 @@
       </section>
 
 
-      <!-- ===================================================
-           FIL PERSONNALISÉ
-           =================================================== -->
+      <!-- FIL -->
 
       <section class="feed-section">
 
@@ -273,9 +207,7 @@
         </div>
 
 
-        <!-- =================================================
-             PREMIÈRE PUBLICATION
-             ================================================= -->
+        <!-- PUBLICATION 1 -->
 
         <article class="post-card">
 
@@ -290,13 +222,11 @@
               <div>
 
                 <div class="author-name">
-
                   Otaku Exorciste
 
                   <span class="verified">
                     ✓
                   </span>
-
                 </div>
 
                 <div class="post-meta">
@@ -306,7 +236,6 @@
               </div>
 
             </div>
-
 
             <button
               class="more-button"
@@ -330,16 +259,13 @@
               <div class="character-hair"></div>
 
               <div class="character-face">
-
                 <span class="eye left"></span>
                 <span class="eye right"></span>
-
               </div>
 
               <div class="character-clothes"></div>
 
             </div>
-
 
             <div class="energy energy-one"></div>
             <div class="energy energy-two"></div>
@@ -354,59 +280,26 @@
           <div class="post-actions">
 
             <button class="post-action like-button">
-
-              <span class="action-icon heart">
-                ♡
-              </span>
-
-              <span class="like-count">
-                248
-              </span>
-
+              <span class="action-icon heart">♡</span>
+              <span class="like-count">248</span>
             </button>
-
 
             <button class="post-action comment-button">
-
-              <span class="action-icon">
-                ▢
-              </span>
-
-              <span>
-                34
-              </span>
-
+              <span class="action-icon">▢</span>
+              <span>34</span>
             </button>
-
 
             <button class="post-action repost-button">
-
-              <span class="action-icon">
-                ↻
-              </span>
-
-              <span>
-                12
-              </span>
-
+              <span class="action-icon">↻</span>
+              <span>12</span>
             </button>
-
 
             <button class="post-action save-button">
-
-              <span class="action-icon">
-                ♧
-              </span>
-
+              <span class="action-icon">♧</span>
             </button>
 
-
             <button class="post-action share-button">
-
-              <span class="action-icon">
-                ↗
-              </span>
-
+              <span class="action-icon">↗</span>
             </button>
 
           </div>
@@ -414,29 +307,19 @@
 
           <div class="post-summary">
 
-            <span class="summary-heart">
-              ♥
-            </span>
+            <span class="summary-heart">♥</span>
 
             <strong class="summary-likes">
               248 J'aime
             </strong>
 
-            <span>
-              ·
-            </span>
+            <span>·</span>
 
-            <span>
-              34 commentaires
-            </span>
+            <span>34 commentaires</span>
 
-            <span>
-              ·
-            </span>
+            <span>·</span>
 
-            <span>
-              12 reposts
-            </span>
+            <span>12 reposts</span>
 
           </div>
 
@@ -449,9 +332,7 @@
 
             <div class="comment-content">
 
-              <strong>
-                Maya
-              </strong>
+              <strong>Maya</strong>
 
               <p>
                 Cette publication est incroyable 😍
@@ -469,9 +350,7 @@
         </article>
 
 
-        <!-- =================================================
-             DEUXIÈME PUBLICATION
-             ================================================= -->
+        <!-- PUBLICATION 2 -->
 
         <article class="post-card second-post">
 
@@ -497,7 +376,6 @@
 
             </div>
 
-
             <button
               class="more-button"
               aria-label="Options"
@@ -515,9 +393,7 @@
 
           <div class="creative-post">
 
-            <span>
-              NEXORA
-            </span>
+            <span>NEXORA</span>
 
             <strong>
               CREATE<br>
@@ -531,59 +407,26 @@
           <div class="post-actions">
 
             <button class="post-action like-button">
-
-              <span class="action-icon heart">
-                ♡
-              </span>
-
-              <span class="like-count">
-                96
-              </span>
-
+              <span class="action-icon heart">♡</span>
+              <span class="like-count">96</span>
             </button>
 
-
             <button class="post-action">
-
-              <span class="action-icon">
-                ▢
-              </span>
-
-              <span>
-                12
-              </span>
-
+              <span class="action-icon">▢</span>
+              <span>12</span>
             </button>
 
-
             <button class="post-action">
-
-              <span class="action-icon">
-                ↻
-              </span>
-
-              <span>
-                5
-              </span>
-
+              <span class="action-icon">↻</span>
+              <span>5</span>
             </button>
 
-
             <button class="post-action">
-
-              <span class="action-icon">
-                ♧
-              </span>
-
+              <span class="action-icon">♧</span>
             </button>
 
-
             <button class="post-action">
-
-              <span class="action-icon">
-                ↗
-              </span>
-
+              <span class="action-icon">↗</span>
             </button>
 
           </div>
@@ -593,13 +436,9 @@
       </section>
 
 
-      <!-- FIN DU FIL -->
-
       <div class="feed-end">
 
-        <span>
-          ✦
-        </span>
+        <span>✦</span>
 
         <p>
           Ton fil Nexora s'adapte progressivement à tes goûts.
@@ -610,46 +449,26 @@
     </main>
 
 
-    <!-- =====================================================
-         NAVIGATION INFÉRIEURE
-         ===================================================== -->
+    <!-- NAVIGATION BASSE -->
 
     <nav class="bottom-navigation">
 
-
-      <!-- ACCUEIL -->
       <button
         class="nav-item active"
         data-page="home"
       >
-
-        <span class="nav-icon">
-          ⌂
-        </span>
-
-        <span>
-          Accueil
-        </span>
-
+        <span class="nav-icon">⌂</span>
+        <span>Accueil</span>
       </button>
 
 
-      <!-- AMIS
-           Explorer était ici auparavant.
-      -->
+      <!-- AMIS CONSERVÉ DANS LA NAVIGATION -->
       <button
         class="nav-item"
         data-page="friends"
       >
-
-        <span class="nav-icon">
-          👥
-        </span>
-
-        <span>
-          Amis
-        </span>
-
+        <span class="nav-icon">👥</span>
+        <span>Amis</span>
       </button>
 
 
@@ -660,11 +479,7 @@
         aria-label="Vidéos"
         title="Vidéos"
       >
-
-        <span>
-          ▶
-        </span>
-
+        <span>▶</span>
       </button>
 
 
@@ -710,9 +525,7 @@
   </div>
 
 
-  <!-- =====================================================
-       MODALE DE CRÉATION
-       ===================================================== -->
+  <!-- MODALE CRÉATION -->
 
   <div
     class="modal-overlay"
@@ -744,100 +557,52 @@
 
       <div class="creation-grid">
 
-
         <button
           class="creation-choice photo"
           data-modal-create="Photo"
         >
-
-          <span>
-            ▧
-          </span>
-
-          <strong>
-            Photo
-          </strong>
-
+          <span>▧</span>
+          <strong>Photo</strong>
         </button>
-
 
         <button
           class="creation-choice video"
           data-modal-create="Vidéo"
         >
-
-          <span>
-            ▣
-          </span>
-
-          <strong>
-            Vidéo
-          </strong>
-
+          <span>▣</span>
+          <strong>Vidéo</strong>
         </button>
-
 
         <button
           class="creation-choice text"
           data-modal-create="Texte"
         >
-
-          <span>
-            ✎
-          </span>
-
-          <strong>
-            Texte
-          </strong>
-
+          <span>✎</span>
+          <strong>Texte</strong>
         </button>
-
 
         <button
           class="creation-choice music"
           data-modal-create="Musique"
         >
-
-          <span>
-            ♫
-          </span>
-
-          <strong>
-            Musique
-          </strong>
-
+          <span>♫</span>
+          <strong>Musique</strong>
         </button>
-
 
         <button
           class="creation-choice place"
           data-modal-create="Lieu"
         >
-
-          <span>
-            ⌖
-          </span>
-
-          <strong>
-            Lieu
-          </strong>
-
+          <span>⌖</span>
+          <strong>Lieu</strong>
         </button>
-
 
         <button
           class="creation-choice moment"
           data-modal-create="Moment"
         >
-
-          <span>
-            ✦
-          </span>
-
-          <strong>
-            Moment
-          </strong>
-
+          <span>✦</span>
+          <strong>Moment</strong>
         </button>
 
       </div>
@@ -847,9 +612,7 @@
   </div>
 
 
-  <!-- =====================================================
-       MODALE MENU
-       ===================================================== -->
+  <!-- MENU -->
 
   <div
     class="modal-overlay"
@@ -857,7 +620,6 @@
   >
 
     <div class="menu-panel">
-
 
       <div class="menu-header">
 
@@ -875,6 +637,7 @@
         <button
           class="menu-search"
           id="menuSearchButton"
+          aria-label="Rechercher"
         >
           ⌕
         </button>
@@ -882,7 +645,7 @@
       </div>
 
 
-      <!-- PROFIL DU MENU -->
+      <!-- PROFIL -->
 
       <div class="menu-profile">
 
@@ -902,7 +665,7 @@
 
         </div>
 
-        <button>
+        <button aria-label="Changer de compte">
           ⌄
         </button>
 
@@ -913,36 +676,22 @@
 
       <div class="menu-grid">
 
-
         <button
           class="menu-card"
           data-menu-item="Messages"
         >
-
-          <span>
-            💬
-          </span>
-
-          <strong>
-            Messages
-          </strong>
-
+          <span>💬</span>
+          <strong>Messages</strong>
         </button>
 
 
+        <!-- EXPLORER REMPLACE AMIS -->
         <button
-          class="menu-card"
-          data-menu-item="Amis"
+          class="menu-card menu-card-explore"
+          data-menu-item="Explorer"
         >
-
-          <span>
-            👥
-          </span>
-
-          <strong>
-            Amis
-          </strong>
-
+          <span>🧭</span>
+          <strong>Explorer</strong>
         </button>
 
 
@@ -950,15 +699,8 @@
           class="menu-card"
           data-menu-item="Moments"
         >
-
-          <span>
-            ✨
-          </span>
-
-          <strong>
-            Moments
-          </strong>
-
+          <span>✨</span>
+          <strong>Moments</strong>
         </button>
 
 
@@ -966,15 +708,8 @@
           class="menu-card"
           data-menu-item="Enregistrements"
         >
-
-          <span>
-            🔖
-          </span>
-
-          <strong>
-            Enregistrements
-          </strong>
-
+          <span>🔖</span>
+          <strong>Enregistrements</strong>
         </button>
 
 
@@ -982,15 +717,8 @@
           class="menu-card"
           data-menu-item="Notifications"
         >
-
-          <span>
-            🔔
-          </span>
-
-          <strong>
-            Notifications
-          </strong>
-
+          <span>🔔</span>
+          <strong>Notifications</strong>
         </button>
 
 
@@ -998,15 +726,8 @@
           class="menu-card"
           data-menu-item="Communautés"
         >
-
-          <span>
-            👨‍👩‍👧‍👦
-          </span>
-
-          <strong>
-            Communautés
-          </strong>
-
+          <span>👨‍👩‍👧‍👦</span>
+          <strong>Communautés</strong>
         </button>
 
 
@@ -1014,15 +735,8 @@
           class="menu-card"
           data-menu-item="Découvrir"
         >
-
-          <span>
-            🧭
-          </span>
-
-          <strong>
-            Découvrir
-          </strong>
-
+          <span>✨</span>
+          <strong>Découvrir</strong>
         </button>
 
 
@@ -1030,15 +744,8 @@
           class="menu-card"
           data-menu-item="Événements"
         >
-
-          <span>
-            📅
-          </span>
-
-          <strong>
-            Événements
-          </strong>
-
+          <span>📅</span>
+          <strong>Événements</strong>
         </button>
 
       </div>
@@ -1048,46 +755,35 @@
 
       <div class="menu-settings">
 
-
         <button>
 
-          <span>
-            ⚙️
-          </span>
+          <span>⚙️</span>
 
           <strong>
             Paramètres et confidentialité
           </strong>
 
-          <span>
-            ⌄
-          </span>
+          <span>⌄</span>
 
         </button>
 
 
         <button>
 
-          <span>
-            ❔
-          </span>
+          <span>❔</span>
 
           <strong>
             Aide et assistance
           </strong>
 
-          <span>
-            ⌄
-          </span>
+          <span>⌄</span>
 
         </button>
 
 
         <button>
 
-          <span>
-            ➕
-          </span>
+          <span>➕</span>
 
           <strong>
             Ajouter un compte
@@ -1098,9 +794,7 @@
 
         <button class="logout-button">
 
-          <span>
-            🚪
-          </span>
+          <span>🚪</span>
 
           <strong>
             Déconnexion
@@ -1115,9 +809,7 @@
   </div>
 
 
-  <!-- =====================================================
-       TOAST
-       ===================================================== -->
+  <!-- TOAST -->
 
   <div
     class="toast"
@@ -1128,4 +820,4 @@
   <script src="script.js"></script>
 
 </body>
-            </html>
+              </html>
